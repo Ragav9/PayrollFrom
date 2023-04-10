@@ -3,8 +3,8 @@
     <h3>Contract Employer Payscale Form</h3>
   </div>
   <div>
-    <form  [formGroup]="firstFormGroup">
-      <mat-stepper #stepper>
+    <form [formGroup]="firstFormGroup">
+      <mat-vertical-stepper #stepper>
         <mat-step label="PayScale Details">
           <table class="example-full-width item" cellspacing="0">
             <tr>
@@ -312,7 +312,7 @@
             </button>
           </div>
         </mat-step>
-      </mat-stepper>
+      </mat-vertical-stepper>
     </form>
   </div>
 </div>
