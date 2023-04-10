@@ -4,7 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 
-
+import {MatRadioModule} from '@angular/material/radio';
+ 
 import { MaterialExampleModule } from '../material.module';
 import { SelectOverviewExample } from './select-overview-example';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -27,6 +28,7 @@ import { PayrollDisplayComponent } from './payroll-display/payroll-display.compo
     MatStepperModule,
     MatButtonModule,
     MatDatepickerModule,
+    MatRadioModule,
   ],
   bootstrap: [SelectOverviewExample],
 })

@@ -10,6 +10,6 @@ export class PayrollFormComponent {
   constructor(private _formBuilder: FormBuilder) {}
 
   firstFormGroup = this._formBuilder.group({
-    PayScaleAmount: ['', Validators.required],
+    PayScaleDescription: ['', Validators.required],
   });
 }

@@ -9,27 +9,32 @@
           <table class="example-full-width item" cellspacing="0">
             <tr>
               <td>
-                <mat-form-field class="example-full-width item">
-                  <mat-label>Pay Scale Amount</mat-label>
-                  <input matInput formControlName="PayScaleAmount" required />
+                <mat-form-field   appearance="outline" class="example-full-width" >
+                  <mat-label>PayScaleCode</mat-label>
+                  <input
+                    matInput
+                    placeholder="Placeholder"
+                    value="P4/0001"
+                    disabled
+                  />
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field appearance="outline"   class="example-full-width">
+                  <mat-label>Pay Scale Description</mat-label>
+                  <textarea matInput></textarea>
                 </mat-form-field>
               </td>
             </tr>
             <tr>
               <td>
-                <mat-form-field class="example-full-width">
-                  <mat-label>Pay Scale Description</mat-label>
-                  <textarea matInput></textarea>
-                </mat-form-field>
-              </td>
-              <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Wage Type</mat-label>
                   <input matInput />
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Effective From</mat-label>
                   <input matInput [matDatepicker]="picker" />
                   <mat-hint>MM/DD/YYYY</mat-hint>
@@ -48,11 +53,12 @@
             </div>
           </table>
         </mat-step>
+
         <mat-step label="Earnings ">
           <table class="example-full-width item" cellspacing="0">
             <tr>
               <td>
-                <mat-form-field class="example-full-width item">
+                <mat-form-field appearance="outline"   class="example-full-width item">
                   <mat-label>Basic</mat-label>
                   <input matInput />
                 </mat-form-field>
@@ -60,19 +66,19 @@
             </tr>
             <tr>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>DA</mat-label>
                   <input matInput />
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>HRA</mat-label>
                   <input matInput />
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Conveyance</mat-label>
                   <input matInput />
                 </mat-form-field>
@@ -80,25 +86,25 @@
             </tr>
             <tr>
               <td>
-                <mat-form-field class="example-full-width item">
+                <mat-form-field appearance="outline"   class="example-full-width item">
                   <mat-label>Medical Allowance</mat-label>
                   <input matInput />
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width item">
+                <mat-form-field appearance="outline"   class="example-full-width item">
                   <mat-label>Special Allowance</mat-label>
                   <input matInput />
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width item">
+                <mat-form-field appearance="outline"   class="example-full-width item">
                   <mat-label>Incentvie-Skilled/Semi-skilled</mat-label>
                   <input matInput />
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width item">
+                <mat-form-field appearance="outline"   class="example-full-width item">
                   <mat-label>Incentvie-Un skilled</mat-label>
                   <input matInput />
                 </mat-form-field>
@@ -106,13 +112,13 @@
             </tr>
             <tr>
               <td>
-                <mat-form-field class="example-full-width item">
+                <mat-form-field appearance="outline"   class="example-full-width item">
                   <mat-label>Attendance Incentive</mat-label>
                   <input matInput />
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width item">
+                <mat-form-field appearance="outline"   class="example-full-width item">
                   <mat-label>Night shift Allowance (C)</mat-label>
                   <input matInput />
                 </mat-form-field>
@@ -121,37 +127,37 @@
 
             <tr>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Other-1</mat-label>
                   <textarea matInput placeholder="remarks"></textarea>
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Other-1</mat-label>
                   <textarea matInput placeholder="remarks"></textarea>
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Other-2</mat-label>
                   <textarea matInput placeholder="remarks"></textarea>
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Other-3</mat-label>
                   <textarea matInput placeholder="remarks"></textarea>
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Other-4</mat-label>
                   <textarea matInput placeholder="remarks"></textarea>
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Other-5</mat-label>
                   <textarea matInput placeholder="remarks"></textarea>
                 </mat-form-field>
@@ -159,7 +165,7 @@
             </tr>
             <tr>
               <td>
-                <mat-form-field class="example-full-width item">
+                <mat-form-field appearance="outline"   class="example-full-width item">
                   <mat-label>Total Earning (Gross)</mat-label>
                   <input matInput />
                 </mat-form-field>
@@ -179,7 +185,7 @@
           <table class="example-full-width item" cellspacing="0">
             <tr>
               <td>
-                <mat-form-field class="example-full-width item">
+                <mat-form-field appearance="outline"   class="example-full-width item">
                   <mat-label>PF(%on Basic+DA)(%)</mat-label>
                   <input matInput />
                 </mat-form-field>
@@ -187,25 +193,25 @@
             </tr>
             <tr>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>ESI(% on Gross)(%)</mat-label>
                   <input matInput />
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Canteen deduction</mat-label>
                   <input matInput />
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Professional Tax</mat-label>
                   <input matInput />
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width item">
+                <mat-form-field appearance="outline"   class="example-full-width item">
                   <mat-label>Labour Welfare fund</mat-label>
                   <input matInput />
                 </mat-form-field>
@@ -213,37 +219,37 @@
             </tr>
             <tr>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Deduction-1</mat-label>
                   <textarea matInput placeholder="remarks"></textarea>
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Deduction-1</mat-label>
                   <textarea matInput placeholder="remarks"></textarea>
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Deduction-2</mat-label>
                   <textarea matInput placeholder="remarks"></textarea>
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Deduction-3</mat-label>
                   <textarea matInput placeholder="remarks"></textarea>
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Deduction-4</mat-label>
                   <textarea matInput placeholder="remarks"></textarea>
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="example-full-width">
+                <mat-form-field appearance="outline"   class="example-full-width">
                   <mat-label>Deduction-5</mat-label>
                   <textarea matInput placeholder="remarks"></textarea>
                 </mat-form-field>
@@ -251,7 +257,7 @@
             </tr>
             <tr>
               <td>
-                <mat-form-field class="example-full-width item">
+                <mat-form-field appearance="outline"   class="example-full-width item">
                   <mat-label>Total Deduction</mat-label>
                   <input matInput />
                 </mat-form-field>
@@ -270,7 +276,7 @@
         <mat-step label="Employers">
           <tr>
             <td>
-              <mat-form-field class="example-full-width item">
+              <mat-form-field appearance="outline"   class="example-full-width item">
                 <mat-label>Net Take Home Paid to CL</mat-label>
                 <input matInput />
               </mat-form-field>
@@ -279,13 +285,13 @@
 
           <tr>
             <td>
-              <mat-form-field class="example-full-width item">
+              <mat-form-field appearance="outline"   class="example-full-width item">
                 <mat-label>PF(%on Basic+DA)(%)</mat-label>
                 <input matInput />
               </mat-form-field>
             </td>
             <td>
-              <mat-form-field class="example-full-width item">
+              <mat-form-field appearance="outline"   class="example-full-width item">
                 <mat-label>ESI(% on Gross)(%)</mat-label>
                 <input matInput />
               </mat-form-field>
@@ -293,7 +299,7 @@
           </tr>
           <tr>
             <td>
-              <mat-form-field class="example-full-width item">
+              <mat-form-field appearance="outline"   class="example-full-width item">
                 <mat-label>CTC</mat-label>
                 <input matInput />
               </mat-form-field>
