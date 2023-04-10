@@ -5,7 +5,7 @@
   <div>
     <form [formGroup]="payrollFormGroup">
       <mat-vertical-stepper #stepper>
-        <mat-step label="PayScale Details" active>
+        <mat-step required label="PayScale Details" active>
           <table class="example-full-width item" cellspacing="0">
             <tr>
               <td>
@@ -32,7 +32,7 @@
             </tr>
             <tr>
               <td>
-                <mat-radio-group aria-label="Select an option">
+                <mat-radio-group required aria-label="Select an option">
                   <mat-label>Wage Type:</mat-label>
                   <mat-radio-button value="1">Daily </mat-radio-button>
                   <mat-radio-button value="2">Monthly </mat-radio-button>

@@ -25,7 +25,10 @@
     <mat-divider style="margin: 0 0 10px 0"></mat-divider>
 
     <div class="mb-3" *ngIf="selectedPayroll">
-      <div class="row p-3">
+      <div
+        class="row p-3"
+        style="display: flex; justify-content: space-around;"
+      >
         <p class="col">
           <label>Pay Scale Description: </label>
           {{ selectedPayroll.PayScaleDescription }}
@@ -39,8 +42,95 @@
       </div>
       <mat-divider style="margin: 0 0 10px 0"></mat-divider>
 
+      <!-- colunm earings -->
+
+      <div class="row">
+        <div class="col-6" style=" border: 0 2px 0 0 solid black;">
+          <div class="col">
+            <h4>Earnings</h4>
+          </div>
+
+          <div style="margin-right:100px">
+            <p class="col">
+              <label>Basic: </label> {{ selectedPayroll.Earnings.Basic }}
+            </p>
+            <p class="col">
+              <label>DA: </label> {{ selectedPayroll.Earnings.DA }}
+            </p>
+            <p class="col">
+              <label>HRA: </label> {{ selectedPayroll.Earnings.HRA }}
+            </p>
+            <p class="col">
+              <label>Conveyance: </label>
+              {{ selectedPayroll.Earnings.Conveyance }}
+            </p>
+            <p class="col">
+              <label>Medical Allowance: </label>
+              {{ selectedPayroll.Earnings.MedicalAllowance }}
+            </p>
+            <p class="col">
+              <label> Special Allowance: </label>
+              {{ selectedPayroll.Earnings.SpecialAllowance }}
+            </p>
+            <p class="col">
+              <label>Incentvie Unskilled: </label>
+              {{ selectedPayroll.Earnings.Incentvie_Unskilled }}
+            </p>
+            <p class="col">
+              <label> Incentvie Skilled: </label>
+              {{ selectedPayroll.Earnings.Incentvie_Skilled }}
+            </p>
+            <p class="col">
+              <label>Attendance Incentive: </label>
+              {{ selectedPayroll.Earnings.AttendanceIncentive }}
+            </p>
+            <p class="col">
+              <label> NightshiftAllowance: </label>
+              {{ selectedPayroll.Earnings.NightshiftAllowance }}
+            </p>
+            <div class="row row-cols-1">
+              <p class="col">
+                <label>Total Earning: </label>
+                {{ selectedPayroll.Earnings.TotalEarning }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="col">
+            <h4>Deductions</h4>
+          </div>
+          <div>
+            <p class="col">
+              <label>PF: </label> {{ selectedPayroll.Deductions.PF }}
+            </p>
+            <p class="col">
+              <label>ESI: </label> {{ selectedPayroll.Deductions.ESI }}
+            </p>
+
+            <p class="col">
+              <label>Canteen deduction: </label>
+              {{ selectedPayroll.Deductions.Canteendeduction }}
+            </p>
+            <p class="col">
+              <label>ProfessionalTax: </label>
+              {{ selectedPayroll.Deductions.ProfessionalTax }}
+            </p>
+            <div class="row row-cols-1">
+              <p class="col">
+                <label>Total Deduction: </label>
+                {{ selectedPayroll.Deductions.Total_Deduction }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--  -->
+
       <!-- Earnings -->
-      <div class="row p-3">
+      <!-- <div class="row p-3">
         <div class="col">
           <h4>Earnings:</h4>
         </div>
@@ -95,10 +185,10 @@
           </p>
         </div>
       </div>
-      <mat-divider style="margin: 0 0 10px 0"></mat-divider>
+      <mat-divider style="margin: 0 0 10px 0"></mat-divider> -->
 
       <!-- Deduction -->
-      <div class="row p-3">
+      <!-- <div class="row p-3">
         <div class="col">
           <h4>Deduction:</h4>
         </div>
@@ -131,7 +221,7 @@
             {{ selectedPayroll.Deductions.Total_Deduction }}
           </p>
         </div>
-      </div>
+      </div> -->
 
       <mat-divider style="margin: 0 0 10px 0"></mat-divider>
 
