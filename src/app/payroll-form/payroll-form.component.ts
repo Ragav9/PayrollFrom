@@ -7,5 +7,9 @@ import {FormBuilder, Validators} from '@angular/forms';
   styleUrls: ['./payroll-form.component.scss']
 })
 export class PayrollFormComponent {
+  constructor(private _formBuilder: FormBuilder) {}
 
+  firstFormGroup = this._formBuilder.group({
+    PayScaleAmount: ['', Validators.required],
+  });
 }

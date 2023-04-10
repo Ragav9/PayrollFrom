@@ -3,7 +3,7 @@
     <h3>Contract Employer Payscale Form</h3>
   </div>
   <div>
-    <form>
+    <form  [formGroup]="firstFormGroup">
       <mat-stepper #stepper>
         <mat-step label="PayScale Details">
           <table class="example-full-width item" cellspacing="0">
@@ -11,7 +11,7 @@
               <td>
                 <mat-form-field class="example-full-width item">
                   <mat-label>Pay Scale Amount</mat-label>
-                  <input matInput />
+                  <input matInput formControlName="PayScaleAmount" required />
                 </mat-form-field>
               </td>
             </tr>
