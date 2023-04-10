@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { PayrollFormComponent } from './payroll-form/payroll-form.component';
 import { PayrollDisplayComponent } from './payroll-display/payroll-display.component';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [SelectOverviewExample, PayrollFormComponent, PayrollDisplayComponent],
   imports: [
@@ -29,6 +30,7 @@ import { PayrollDisplayComponent } from './payroll-display/payroll-display.compo
     MatButtonModule,
     MatDatepickerModule,
     MatRadioModule,
+    MatInputModule,
   ],
   bootstrap: [SelectOverviewExample],
 })

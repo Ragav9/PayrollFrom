@@ -11,14 +11,13 @@ body {
   height: 100%;
   width: 100vw;
 }
-label {
-  font-weight: 600;
-}
+// label {
+//   font-weight: 600;
+// }
 .container {
   padding-top: 10px;
   margin-bottom: 10px;
 }
-
 
 .button {
   display: flex;
@@ -33,7 +32,6 @@ label {
   margin: 10px 20px 1px 10px;
 }
 
-
 .center {
   margin: 20px;
   display: flex;
@@ -41,7 +39,6 @@ label {
   align-items: center;
   justify-content: center;
 }
-
 
 h4,
 h3 {
