@@ -183,13 +183,53 @@
                 </mat-form-field>
               </div>
             </div>
-            <!-- <div id="others" formArrayName="others">
-              <table>
+<!-- others earnings -->
+            <div id="others" formArrayName="others">
+              <div><p>Other Earnings</p></div>
+<div *ngFor="let otherEarning of others().controls;let i=index " >
+
+<ng-contianer *ngIf="i<=4">
+
+
+
+
+                <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3" 
+                [formGroupName]="i">
+                  <div class="col">
+                    <div class="p-3"><label>Other</label></div>
+                  </div>
+                  <div class="col">
+                    <div class="p-3 t"> <mat-form-field appearance="outline">
+                      <mat-label>Name</mat-label>
+                      <input type="text" matInput formControlName="name"  (change)="onFormChange()"/>
+                      </mat-form-field></div>
+                  </div>
+                  <div class="col">
+                    <div class="p-3 t"> <mat-form-field appearance="outline">
+                      <mat-label>Amount</mat-label>
+                      <input type="text" matInput formControlName="amount" (change)="onFormChange()"/>
+                      </mat-form-field></div>
+                  </div>
+                  <div class="col">
+                    <div class="p-3 "> <button type="button" class="btn btn-danger"   (click)="deleteEarning(i)" > Remove </button></div>
+                  </div>
+                </div>
+              </ng-contianer>
+              </div>
+
+            </div>
+<div>   <button type="button" (click)="addNewEarning()" class="btn btn-primary">Add</button></div>
+
+
+
+
+
+              <!-- <table>
                 <tr>
                   <td><h5>Other Earnings</h5></td>
                 </tr>
                 <tr
-                  *ngFor="let otherEarning of others().controls:let i=index"
+                  *ngFor="let otherEarning of others().controls;let i=index"
                   [formGroupName]="i"
                 >
                   <td>
@@ -235,7 +275,7 @@
                 </tr>
               </table>
               <button type="button" (click)="addNewEarning()" class="btn btn-primary">+</button>
-            </div> -->
+            </div>  -->
           </div>
 
           <div>
@@ -604,7 +644,7 @@
                       appearance="outline"
                       class="example-full-width item"
                     >
-                      <mat-label>Servicve Tax</mat-label>
+                      <mat-label>Service Tax</mat-label>
                       <input
                         matInput
                         type="number"
@@ -648,7 +688,7 @@
             <button mat-raised-button color="primary" matStepperPrevious>
               Back
             </button>
-            <button mat-raised-button color="primary" (click)="onPreview()">
+            <button id="green" mat-raised-button color="primary" (click)="onPreview()">
               Preview
             </button>
           </div>

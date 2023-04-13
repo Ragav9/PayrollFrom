@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { AppService } from '../app.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import {Location} from '@angular/common'
 
 // interface Payroll {
 //   PayScaleCode: string;
@@ -57,7 +58,7 @@ export class PayrollDisplayComponent {
   employeeESI : ''
   employerESI : ''
 
-  constructor(private appService: AppService, private router: Router) {}
+  constructor(private appService: AppService, private router: Router , private location:Location) {}
   ngOnInit() {
     this.formDeatils = this.appService.getFormDetails();
     this.PFEmployee=this.appService.PFEmployee
@@ -67,7 +68,7 @@ export class PayrollDisplayComponent {
   }
 
   back() {
-    this.router.navigate(['/payrollForm']);
+    this.location.back();
   }
   saveData() {
     console.log(this.formDeatils.values);

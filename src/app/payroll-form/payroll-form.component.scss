@@ -72,9 +72,9 @@ td {
 // .mat-vertical-stepper .mat-step-label-active {
 //   color: red;
 // }
-:host ::ng-deep #others mat-form-field {
-  width: 24.375em;
-  margin: 1.25em 0.625em 0.313em 0;
+:host ::ng-deep #others mat-form-field ,p {
+  width: 12.25rem;
+  padding-top: 1.5em;
 }
 :host ::ng-deep #deductions mat-form-field {
   display: flex;
@@ -92,10 +92,10 @@ td {
   padding-top: 1.625em;
   width: 21.25rem;
   display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 :host ::ng-deep #de mat-form-field {
   width: 25.625em;

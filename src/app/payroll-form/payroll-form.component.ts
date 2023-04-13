@@ -19,7 +19,7 @@ export class PayrollFormComponent implements OnInit {
   code: string;
   plant = 'P4';
   currentNumber = 1;
-  startDate: Date ;
+  startDate: Date;
 
   employeeESI = '';
   employerESI = '';
@@ -29,6 +29,7 @@ export class PayrollFormComponent implements OnInit {
   totalDeduct = '';
   NETtakeHome = '';
   ctc = '';
+  monthWage = 26;
   wagetype: string;
 
   payrollFormGroup: FormGroup;
@@ -102,11 +103,12 @@ export class PayrollFormComponent implements OnInit {
     this.calculateTotalDeduction();
   }
 
- 
-  setEffectiveFromDate(date: any){
+  setEffectiveFromDate(date: any) {
     // this.payrollFormGroup.get('effectiveFrom')?.patchValue(event.value);
-    const stringDate: any = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-    this.payrollFormGroup.get('effectiveFrom')?.setValue(stringDate)
+    const stringDate: any = `${date.getDate()}/${
+      date.getMonth() + 1
+    }/${date.getFullYear()}`;
+    this.payrollFormGroup.get('effectiveFrom')?.setValue(stringDate);
   }
 
   generatePayscaleCode(plant: String) {
@@ -176,8 +178,15 @@ export class PayrollFormComponent implements OnInit {
       this.payrollFormGroup.get('labourWelfareFund')?.value || 0;
 
     this.totalDeduct = epf + esi + profTax + labourFund;
+    
+    if (this.wagetype === 'Daily') {
+     const deduct = Number(this.totalDeduct) * this.monthWage
+      this.payrollFormGroup.patchValue({ totalDeduction: deduct})
+    } else {
+      this.payrollFormGroup.patchValue({ totalDeduction:this.totalDeduct  })
+    }
 
-    this.payrollFormGroup.patchValue({ totalDeduction: this.totalDeduct });
+    
   }
 
   // TotalEarnings
@@ -229,7 +238,13 @@ export class PayrollFormComponent implements OnInit {
       other_5_amount +
       other_6_amount;
 
-    this.payrollFormGroup.patchValue({ totalEarnings: this.grossSalary });
+    if (this.wagetype === 'Daily') {
+      const monthGrossSalary = Number(this.grossSalary) * this.monthWage;
+      this.payrollFormGroup.patchValue({ totalEarnings: monthGrossSalary });
+    } else {
+      this.payrollFormGroup.patchValue({ totalEarnings: this.grossSalary });
+    }
+
   }
   calculateNETtakeHome() {
     const netValue = Number(this.grossSalary) - Number(this.totalDeduct);
