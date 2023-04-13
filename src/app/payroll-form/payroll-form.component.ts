@@ -19,6 +19,7 @@ export class PayrollFormComponent implements OnInit {
   code: string;
   plant = 'P4';
   currentNumber = 1;
+  startDate: Date ;
 
   employeeESI = '';
   employerESI = '';
@@ -100,8 +101,12 @@ export class PayrollFormComponent implements OnInit {
     this.calculateTotalEarnings();
     this.calculateTotalDeduction();
   }
-  setEffectiveFromDate(event: any): void {
-    this.payrollFormGroup.get('effectiveFrom')?.patchValue(event.value);
+
+ 
+  setEffectiveFromDate(date: any){
+    // this.payrollFormGroup.get('effectiveFrom')?.patchValue(event.value);
+    const stringDate: any = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    this.payrollFormGroup.get('effectiveFrom')?.setValue(stringDate)
   }
 
   generatePayscaleCode(plant: String) {
@@ -250,13 +255,13 @@ export class PayrollFormComponent implements OnInit {
   }
 
   onPreview() {
-    console.log(
-      this.payrollFormGroup.value,
-      this.PFEmployee,
-      this.PFEmployer,
-      this.employeeESI,
-      this.employerESI
-    );
+    // console.log(
+    //   this.payrollFormGroup.value,
+    //   this.PFEmployee,
+    //   this.PFEmployer,
+    //   this.employeeESI,
+    //   this.employerESI
+    // );
     this.appService.viewPayroll(
       this.payrollFormGroup.value,
       this.PFEmployee,

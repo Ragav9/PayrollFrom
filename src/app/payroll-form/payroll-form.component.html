@@ -48,21 +48,22 @@
                   <input
                     matInput
                     [matDatepicker]="picker"
+                    (dateChange)="setEffectiveFromDate($event.value)"
                     formcontrolName="effectiveFrom"
                   />
                   <mat-hint>MM/DD/YYYY</mat-hint>
                   <mat-datepicker-toggle
                     matIconSuffix
                     [for]="picker"
-                    (dateChange)="setEffectiveFromDate($event)"
+                   
                   ></mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-datepicker #picker  > </mat-datepicker>
                 </mat-form-field>
               </div>
             </div>
           </div>
 
-          <div>
+          <div  style="display: flex; justify-content: flex-start;padding-top:2.5em">
             <button mat-raised-button color="primary" matStepperNext>
               Next
             </button>
