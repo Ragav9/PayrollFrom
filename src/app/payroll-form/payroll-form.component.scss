@@ -2,13 +2,32 @@
   width: 100%;
 }
 
-.item {
-  margin: 0 30px 0 0;
+.item-1 {
+  padding-bottom: 1.89rem;
+}
+.columns {
+  width: 100%;
+}
+.column {
+  width: 100%;
+}
+@media (min-width: 48em) {
+  .column {
+    width: 50%;
+    float: left;
+    flex-direction: column;
+  }
+  .columns {
+    content: '';
+    display: table;
+    clear: both;
+  }
 }
 
 .example-full-width {
   width: 85%;
-  padding: 0 20px 0 0;
+  padding: 0 1.25em 0 0;
+  margin-right: 10px;
 }
 mat-lable {
   font-weight: 600;
@@ -21,8 +40,8 @@ mat-step {
 }
 
 td {
-  padding: 0 0 0 50px;
-  margin: 0 70px 0 50px;
+  padding: 0 0 0 3.125em;
+  margin: 0 4.375em 0 3.125em;
 }
 // tr {
 //   padding: 30px 0x 0 0;
@@ -35,29 +54,65 @@ td {
 }
 
 .mat-mdc-form-field {
-  margin: 20px 10px 10px 0;
-  width: 500px;
+  margin: 2.25em 0.625em 0.625em 0;
+  // padding-bottom: 40px;
+  width: 15.25em;
+  height: 0.1em;
 }
 :host ::ng-deep #earnings mat-form-field {
-  width: 500px;
-  margin: 20px 10px 5px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 16.25rem;
+  height: 0.1rem;
+  // margin: 1.25em 0.625em 0.313em 0;
+  font-size: 14px;
+  padding: 0 0 2.7em 3.2em;
 }
 // .mat-vertical-stepper .mat-step-label-active {
 //   color: red;
 // }
 :host ::ng-deep #others mat-form-field {
-  width: 390px;
-  margin: 20px 10px 5px 0;
+  width: 24.375em;
+  margin: 1.25em 0.625em 0.313em 0;
 }
 :host ::ng-deep #deductions mat-form-field {
-  width: 250px;
-  // margin: 20px 10px 5px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 16.25rem;
+  height: 0.1rem;
+
+  font-size: 14px;
+  padding: 0 0 2.7em 3.2em;
+
+  // margin:  0.625em 0.313em 0;
+}
+:host ::ng-deep #deductions mat-radio-group {
+  padding-top: 1.625em;
+  width: 21.25rem;
+  display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+:host ::ng-deep #de mat-form-field {
+  width: 25.625em;
+
+  // margin:  0.625em 0.313em 0;
+}
+#others {
+  margin-top: 10px;
+}
+#deduction {
+  margin: 2.625em 0 0 0;
 }
 .mat-mdc-radio-button ~ .mat-mdc-radio-button {
   margin-left: 16px;
 }
 :host ::ng-deep #total mat-form-field {
-  width: 500px;
+  width: 31.25em;
   display: flex;
   justify-content: center;
   align-items: center;

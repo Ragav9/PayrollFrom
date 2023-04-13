@@ -1,252 +1,176 @@
 <div class="container mat-elevation-z8">
-  <div>
+  <!-- 1st Line -->
+  <div id="title">
     <h3>Contract Employer PayScale</h3>
   </div>
-
-  <mat-divider style="margin: 0 0 10px 0"></mat-divider>
-
-  <div>
-    <div>
-      <mat-form-field click="mySelect.close()" appearance="fill">
-        <label>Pay Scale Code</label>
-        <mat-select
-          #mySelect
-          (selectionChange)="onPayScaleSelectionChange($event.value)"
-        >
-          <mat-option
-            *ngFor="let data of payrollData"
-            [value]="data.PayScaleCode"
-          >
-            {{ data.PayScaleCode }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+  <!-- 2nd Line -->
+  <div id="ndLine">
+    <div class="row" style="display: flex; justify-content: space-around;    ">
+      <p class="col">
+        <label>Pay Scale Description: </label>
+        {{ formDeatils.PayScaleDescription }}
+      </p>
+      <p class="col"><label>Wage Type: </label>{{ formDeatils.wageType }}</p>
+      <p class="col">
+        <label>Effective From: </label> {{ formDeatils.effectivefrom }}
+      </p>
     </div>
-    <mat-divider style="margin: 0 0 10px 0"></mat-divider>
+  </div>
 
-    <div class="mb-3" *ngIf="selectedPayroll">
-      <div
-        class="row p-3"
-        style="display: flex; justify-content: space-around;"
-      >
-        <p class="col">
-          <label>Pay Scale Description: </label>
-          {{ selectedPayroll.PayScaleDescription }}
-        </p>
-        <p class="col">
-          <label>Wage Type: </label>{{ selectedPayroll.WageType }}
-        </p>
-        <p class="col">
-          <label>Effective From: </label> {{ selectedPayroll.Effectivefrom }}
-        </p>
-      </div>
-      <mat-divider style="margin: 0 0 10px 0"></mat-divider>
+  <!-- 3rd Line -->
+  <div id="rdLine">
+    <div class="row">
+      <h4>Employee</h4>
 
-      <!-- colunm earings -->
-
-      <div class="row">
-        <div class="col-6" style=" border: 0 2px 0 0 solid black;">
-          <div class="col">
-            <h4>Earnings</h4>
-          </div>
-
-          <div style="margin-right:100px">
-            <p class="col">
-              <label>Basic: </label> {{ selectedPayroll.Earnings.Basic }}
-            </p>
-            <p class="col">
-              <label>DA: </label> {{ selectedPayroll.Earnings.DA }}
-            </p>
-            <p class="col">
-              <label>HRA: </label> {{ selectedPayroll.Earnings.HRA }}
-            </p>
-            <p class="col">
-              <label>Conveyance: </label>
-              {{ selectedPayroll.Earnings.Conveyance }}
-            </p>
-            <p class="col">
-              <label>Medical Allowance: </label>
-              {{ selectedPayroll.Earnings.MedicalAllowance }}
-            </p>
-            <p class="col">
-              <label> Special Allowance: </label>
-              {{ selectedPayroll.Earnings.SpecialAllowance }}
-            </p>
-            <p class="col">
-              <label>Incentvie Unskilled: </label>
-              {{ selectedPayroll.Earnings.Incentvie_Unskilled }}
-            </p>
-            <p class="col">
-              <label> Incentvie Skilled: </label>
-              {{ selectedPayroll.Earnings.Incentvie_Skilled }}
-            </p>
-            <p class="col">
-              <label>Attendance Incentive: </label>
-              {{ selectedPayroll.Earnings.AttendanceIncentive }}
-            </p>
-            <p class="col">
-              <label> NightshiftAllowance: </label>
-              {{ selectedPayroll.Earnings.NightshiftAllowance }}
-            </p>
-            <div class="row row-cols-1">
-              <p class="col">
-                <label>Total Earning: </label>
-                {{ selectedPayroll.Earnings.TotalEarning }}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-6">
-          <div class="col">
-            <h4>Deductions</h4>
-          </div>
-          <div>
-            <p class="col">
-              <label>PF: </label> {{ selectedPayroll.Deductions.PF }}
-            </p>
-            <p class="col">
-              <label>ESI: </label> {{ selectedPayroll.Deductions.ESI }}
-            </p>
-
-            <p class="col">
-              <label>Canteen deduction: </label>
-              {{ selectedPayroll.Deductions.Canteendeduction }}
-            </p>
-            <p class="col">
-              <label>ProfessionalTax: </label>
-              {{ selectedPayroll.Deductions.ProfessionalTax }}
-            </p>
-            <div class="row row-cols-1">
-              <p class="col">
-                <label>Total Deduction: </label>
-                {{ selectedPayroll.Deductions.Total_Deduction }}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!--  -->
-
-      <!-- Earnings -->
-      <!-- <div class="row p-3">
+      <div class="col-6 colborder">
         <div class="col">
-          <h4>Earnings:</h4>
+          <h4>Earnings</h4>
         </div>
 
-        <div class="row row-cols-4">
-          <p class="col">
-            <label>Basic: </label> {{ selectedPayroll.Earnings.Basic }}
-          </p>
-          <p class="col">
-            <label>DA: </label> {{ selectedPayroll.Earnings.DA }}
-          </p>
-          <p class="col">
-            <label>HRA: </label> {{ selectedPayroll.Earnings.HRA }}
-          </p>
-          <p class="col">
-            <label>Conveyance: </label>
-            {{ selectedPayroll.Earnings.Conveyance }}
-          </p>
-        </div>
-        <div class="row row-cols-4">
-          <p class="col">
-            <label>Medical Allowance: </label>
-            {{ selectedPayroll.Earnings.MedicalAllowance }}
-          </p>
-          <p class="col">
-            <label> Special Allowance: </label>
-            {{ selectedPayroll.Earnings.SpecialAllowance }}
-          </p>
-          <p class="col">
-            <label>Incentvie Unskilled: </label>
-            {{ selectedPayroll.Earnings.Incentvie_Unskilled }}
-          </p>
-          <p class="col">
-            <label> Incentvie Skilled: </label>
-            {{ selectedPayroll.Earnings.Incentvie_Skilled }}
-          </p>
-        </div>
-        <div class="row row-cols-4">
-          <p class="col">
-            <label>Attendance Incentive: </label>
-            {{ selectedPayroll.Earnings.AttendanceIncentive }}
-          </p>
-          <p class="col">
-            <label> NightshiftAllowance: </label>
-            {{ selectedPayroll.Earnings.NightshiftAllowance }}
-          </p>
-        </div>
-        <div class="row row-cols-1">
-          <p class="col">
-            <label>Total Earning: </label>
-            {{ selectedPayroll.Earnings.TotalEarning }}
-          </p>
+        <div class="row">
+          <div class="col-6">
+            <p class="col" id="basic"><label>Basic </label></p>
+            <p class="col" id="DA"><label>DA </label></p>
+            <p class="col" id="HRA"><label>HRA </label></p>
+            <p class="col" id="conveyance"><label>Conveyance </label></p>
+            <p class="col" id="medicalAllowance">
+              <label>Medical Allowance </label>
+            </p>
+            <p class="col" id="specialAllowance">
+              <label> Special Allowance </label>
+            </p>
+            <p class="col" id="incentiveUnskilled">
+              <label>Incentvie Unskilled </label>
+            </p>
+            <p class="col" id="IncentiveSkilled">
+              <label> Incentvie Skilled</label>
+            </p>
+            <p class="col" id="attendanceAllowance">
+              <label>Attendance Incentive </label>
+            </p>
+            <p class="col" id="totalEarnings">
+              <label> NightshiftAllowance</label>
+            </p>
+            <p class="col" id="totalEarnings">
+              <label>Total Earning </label>
+            </p>
+          </div>
+          <div class="col-6">
+            <p class="col" for="basic">: {{ formDeatils.basic }}</p>
+            <p class="col" for="DA">: {{ formDeatils.DA }}</p>
+            <p class="col" for="HRA">: {{ formDeatils.HRA }}</p>
+            <p class="col" for="conveyance">: {{ formDeatils.conveyance }}</p>
+            <p class="col" for="medicalAllowance">
+              : {{ formDeatils.medicalAllowance }}
+            </p>
+            <p class="col" for="specialAllowance">
+              : {{ formDeatils.specialAllowance }}
+            </p>
+            <p class="col" for="incentiveUnskilled">
+              : {{ formDeatils.incentiveUnskilled }}
+            </p>
+            <p class="col" for="IncentiveSkilled">
+              : {{ formDeatils.incentiveSkilled }}
+            </p>
+            <p class="col" for="attendanceAllowance">
+              : {{ formDeatils.attendanceAllowance }}
+            </p>
+            <p class="col" for="nightshiftAllowance">
+              : {{ formDeatils.nightShiftAllowance }}
+            </p>
+            <p class="col" for="totalEarnings">
+              : {{ formDeatils.totalEarnings }}
+            </p>
+          </div>
         </div>
       </div>
-      <mat-divider style="margin: 0 0 10px 0"></mat-divider> -->
 
-      <!-- Deduction -->
-      <!-- <div class="row p-3">
+      <div class="col-6">
         <div class="col">
-          <h4>Deduction:</h4>
+          <h4>Deductions</h4>
         </div>
-        <div class="row row-cols-4">
-          <p class="col">
-            <label>PF: </label> {{ selectedPayroll.Deductions.PF }}
-          </p>
-          <p class="col">
-            <label>ESI: </label> {{ selectedPayroll.Deductions.ESI }}
-          </p>
 
-          <p class="col">
-            <label>Canteen deduction: </label>
-            {{ selectedPayroll.Deductions.Canteendeduction }}
-          </p>
-          <p class="col">
-            <label>ProfessionalTax: </label>
-            {{ selectedPayroll.Deductions.ProfessionalTax }}
-          </p>
-        </div>
-        <div class="row row-cols-4">
-          <p class="col">
-            <label>Labour Welfare Fund: </label>
-            {{ selectedPayroll.Deductions.LabourWelfareFund }}
-          </p>
-        </div>
-        <div class="row row-cols-1">
-          <p class="col">
-            <label>Total Deduction: </label>
-            {{ selectedPayroll.Deductions.Total_Deduction }}
-          </p>
-        </div>
-      </div> -->
+        <div class="row">
+          <div class="col-6">
+            <p class="col" id="DPF"><label>PF</label></p>
+            <p class="col" id="DESI"><label>ESI</label></p>
+            <p class="col" id="professionalTax">
+              <label>Professional Tax</label>
+            </p>
+            <p class="col" id="canteenDeduction">
+              <label>Canteen Deduction</label>
+            </p>
+            <p class="col" id="labourWelfareFund">
+              <label>Labour Welfare Fund</label>
+            </p>
+            <p class="col" id="totalDeduction">
+              <label>Total Deduction</label>
+            </p>
+          </div>
 
-      <mat-divider style="margin: 0 0 10px 0"></mat-divider>
-
-      <div class="row p-3">
-        <div class="row-cols-1">
-          <p class="col">
-            <label>Net Take Home Paid to CL: </label>
-            {{ selectedPayroll.NetTakeHomePaidtoCL }}
-          </p>
+          <div class="col-6">
+            <p class="col" for="DPF ">: {{ PFEmployee }}</p>
+            <p class="col" for="DESI ">: {{ employeeESI }}</p>
+            <p class="col" for="professionalTax" *ngIf="formDeatils.professionalTax === 'Yes'"> : {{ formDeatils.professionalTaxAmount }}</p>
+            <p class="col" for="professionalTax" *ngIf="formDeatils.professionalTax !== 'Yes'"> : {{ formDeatils.professionalTax }}</p>
+            <p class="col" for="canteenDeduction">
+              : {{ formDeatils.canteenDeduction }}
+            </p>
+            <p class="col" for="labourWelfareFund">
+              : {{ formDeatils.labourWelfareFund }}
+            </p>
+            <p class="col" for="totalDeduction">
+              : {{ formDeatils.totalDeduction }}
+            </p>
+          </div>
         </div>
-        <div class="row-cols-2">
-          <p class="col"><label>PF: </label> {{ selectedPayroll.PF }}</p>
-          <p class="col"><label>ESI: </label> {{ selectedPayroll.ESI }}</p>
-        </div>
-        <div class="row-cols-1">
-          <p class="col"><label>CTC: </label> {{ selectedPayroll.CTC }}</p>
-        </div>
-      </div>
-
-      <mat-divider style="margin: 0 0 10px 0"></mat-divider>
-      <div class="row p-3">
-        <button mat-raised-button color="primary" (click)="saveData()">
-          Save
-        </button>
       </div>
     </div>
   </div>
+
+  <!-- /////// -->
+
+  <div id="ndLine">
+    <div class="col">
+      <h4>Employer</h4>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <p class="col" id="EPF"><label>PF</label></p>
+        <p class="col" id="EESI"><label>ESI</label></p>
+        <p class="col" id="serviceCharge">
+          <label>Service Charge </label>
+        </p>
+        <p class="col" id="ServiceTax">
+          <label>Service Tax</label>
+        </p>
+      </div>
+
+      <div class="col-3">
+        <p class="col" for="EPF ">: {{ PFEmployer }}</p>
+        <!-- <p class="col" for="EPF ">: 1238468</p> -->
+        <p class="col" for="EESI ">: {{ employerESI }}</p>
+        <p class="col" for="serviceCharge">: {{ formDeatils.serviceCharge }}</p>
+        <p class="col" for="ServiceTax">: {{ formDeatils.ServiceTax }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="ndLine"
+    style="display: flex; justify-content: space-around;padding-top:0.5em"
+  >
+    <p><label>CTC </label> :{{ formDeatils.CTC }}</p>
+
+    <p>
+      <label>Net Take Home Paid to CL </label> :{{ formDeatils.netTakeHome }}
+    </p>
+  </div>
+
+  <div style="display: flex; justify-content: space-around;padding:1.5em">
+    <button mat-raised-button color="primary" (click)="back()">Back</button>
+    <button mat-raised-button color="primary" (click)="saveData()">Save</button>
+  </div>
 </div>
+
+<!--  -->

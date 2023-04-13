@@ -3,46 +3,42 @@
     <h3>Contract Employer Payscale Form</h3>
   </div>
   <div>
-    <form [formGroup]="payrollFormGroup">
+    <form [formGroup]="payrollFormGroup" (ngSubmit)="onSubmit()">
       <mat-vertical-stepper #stepper>
         <mat-step required label="PayScale Details" active>
-          <table class="example-full-width item" cellspacing="0">
-            <tr>
-              <td>
+          <div class="columns" style="padding-bottom:10px;">
+            <div class="column">
+              <div class="item-1">
                 <mat-form-field appearance="outline" class="example-full-width">
                   <mat-label>PayScaleCode</mat-label>
                   <input
                     matInput
-                    placeholder="Placeholder"
-                    value="P4/0001"
-                    disabled
+                    value="{{ payrollFormGroup.get('PayScaleCode') }}"
+                    formControlName="PayScaleCode"
                   />
                 </mat-form-field>
-              </td>
-              <td>
+              </div>
+              <div class="item-1">
+                <mat-radio-group
+                  aria-label="Select an option"
+                  formControlName="wageType"
+                  (change)="viewWageType()"
+                >
+                  <mat-label>Wage Type:</mat-label>
+                  <mat-radio-button value="Daily">Daily </mat-radio-button>
+                  <mat-radio-button value="Monthly">Monthly </mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="item">
                 <mat-form-field appearance="outline" class="example-full-width">
                   <mat-label>Pay Scale Description</mat-label>
-                  <textarea
-                    matInput
-                    formControlName="PayScaleDescription"
-                    required
-                  ></textarea>
+                  <input type="text" matInput formControlName="PayScaleDescription" />
                 </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-radio-group required aria-label="Select an option">
-                  <mat-label>Wage Type:</mat-label>
-                  <mat-radio-button value="1">Daily </mat-radio-button>
-                  <mat-radio-button value="2">Monthly </mat-radio-button>
-                </mat-radio-group>
-                <!-- <mat-radio-group [formControl]="wageType">
-                    <mat-radio-button value="option1">Option 1</mat-radio-button>
-                    <mat-radio-button value="option2">Option 2</mat-radio-button>
-                  </mat-radio-group> -->
-              </td>
-              <td>
+              </div>
+              <div class="item">
                 <mat-form-field
                   appearance="outline"
                   color="primary"
@@ -52,331 +48,211 @@
                   <input
                     matInput
                     [matDatepicker]="picker"
-                    formcontrol="effectiveFrom"
-                    required
+                    formcontrolName="effectiveFrom"
                   />
                   <mat-hint>MM/DD/YYYY</mat-hint>
                   <mat-datepicker-toggle
                     matIconSuffix
                     [for]="picker"
+                    (dateChange)="setEffectiveFromDate($event)"
                   ></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
-              </td>
-            </tr>
-            <div>
-              <button mat-raised-button color="primary" matStepperNext>
-                Next
-              </button>
+              </div>
             </div>
-          </table>
+          </div>
+
+          <div>
+            <button mat-raised-button color="primary" matStepperNext>
+              Next
+            </button>
+          </div>
         </mat-step>
 
         <!-- Earnings -->
         <mat-step label="Earnings ">
           <div id="earnings">
-            <table class="example-full-width item" cellspacing="0">
-              <!-- 1st ROW -->
-              <tr>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width item"
-                  >
-                    <mat-label>Basic</mat-label>
-                    <input matInput formControlName="basic" required />
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width item"
-                  >
-                    <mat-label>Medical Allowance</mat-label>
-                    <input
-                      matInput
-                      formControlName="medicalAllowance"
-                      required
-                    />
-                  </mat-form-field>
-                </td>
-              </tr>
-              <!-- 2nd ROW -->
+            <div class="columns">
+              <div class="column">
+                <mat-form-field
+                  appearance="outline"
+                  class="example-full-width item"
+                >
+                  <mat-label>Basic</mat-label>
+                  <input
+                    type="number"
+                    matInput
+                    formControlName="basic"
+                    (change)="onFormChange()"
+                  />
+                </mat-form-field>
 
-              <tr>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
-                  >
-                    <mat-label>DA</mat-label>
-                    <input matInput formControlName="DA" required />
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
-                  >
-                    <mat-label>Attendance Allowance</mat-label>
-                    <input
-                      matInput
-                      formControlName="attendanceAllowance"
-                      required
-                    />
-                  </mat-form-field>
-                </td>
-              </tr>
-              <!-- 3rd ROW -->
-              <tr>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
-                  >
-                    <mat-label>HRA</mat-label>
-                    <input matInput formControlName="HRA" required />
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width item"
-                  >
-                    <mat-label>Night shift Allowance (C)</mat-label>
-                    <input
-                      matInput
-                      formControlName="nightShiftAllowance"
-                      required
-                    />
-                  </mat-form-field>
-                </td>
-              </tr>
-              <!-- 4th ROW -->
-              <tr>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
-                  >
-                    <mat-label>Conveyance</mat-label>
-                    <input matInput formControlName="conveyance" required />
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width item"
-                  >
-                    <mat-label>Incentvie-Skilled/Semi-skilled</mat-label>
-                    <input
-                      matInput
-                      formControlName="incentiveSkilled"
-                      required
-                    />
-                  </mat-form-field>
-                </td>
-              </tr>
-              <!-- 5th ROW -->
-              <tr>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width item"
-                  >
-                    <mat-label>Special Allowance</mat-label>
-                    <input
-                      matInput
-                      formControlName="specialAllowance"
-                      required
-                    />
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width item"
-                  >
-                    <mat-label>Incentvie-Unskilled</mat-label>
-                    <input
-                      matInput
-                      formControlName="incentiveUnskilled"
-                      required
-                    />
-                  </mat-form-field>
-                </td>
-              </tr>
-            </table>
-          </div>
-
-          <!-- Others -->
-          <!-- 6th ROW -->
-          <div id="others">
-            <table>
-              <tr>
-                <td>
-                  <label>Others-1</label>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
-                  >
-                    <mat-label>Name</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
-                  >
-                    <mat-label>Amount</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <label>Others-2</label>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
-                  >
-                    <mat-label>Name</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
-                  >
-                    <mat-label>Amount</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <label>Others-3</label>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
-                  >
-                    <mat-label>Name</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
-                  >
-                    <mat-label>Amount</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <label>Others-4</label>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
-                  >
-                    <mat-label>Name</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
-                  >
-                    <mat-label>Amount</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <label>Others-5</label>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
-                  >
-                    <mat-label>Name</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
-                  >
-                    <mat-label>Amount</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <label>Others-6</label>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
-                  >
-                    <mat-label>Name</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
-                  >
-                    <mat-label>Amount</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-              </tr>
-            </table>
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label>DA</mat-label>
+                  <input type="number" matInput formControlName="DA" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label>HRA</mat-label>
+                  <input
+                    type="number"
+                    matInput
+                    formControlName="HRA"
+                    (change)="onFormChange()"
+                  />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label>Conveyance</mat-label>
+                  <input
+                    type="number"
+                    matInput
+                    formControlName="conveyance"
+                    (change)="onFormChange()"
+                  />
+                </mat-form-field>
+                <mat-form-field
+                  appearance="outline"
+                  class="example-full-width item"
+                >
+                  <mat-label>Special Allowance</mat-label>
+                  <input
+                    type="number"
+                    matInput
+                    formControlName="specialAllowance"
+                    (change)="onFormChange()"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="column">
+                <mat-form-field
+                  appearance="outline"
+                  class="example-full-width item"
+                >
+                  <mat-label>Medical Allowance</mat-label>
+                  <input
+                    type="number"
+                    matInput
+                    formControlName="medicalAllowance"
+                    (change)="onFormChange()"
+                  />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label>Attendance Allowance</mat-label>
+                  <input
+                    type="number"
+                    matInput
+                    formControlName="attendanceAllowance"
+                    (change)="onFormChange()"
+                  />
+                </mat-form-field>
+                <mat-form-field
+                  appearance="outline"
+                  class="example-full-width item"
+                >
+                  <mat-label>Night shift Allowance (C)</mat-label>
+                  <input
+                    type="number"
+                    matInput
+                    formControlName="nightShiftAllowance"
+                    (change)="onFormChange()"
+                  />
+                </mat-form-field>
+                <mat-form-field
+                  appearance="outline"
+                  class="example-full-width item"
+                >
+                  <mat-label>Incentvie-Skilled/Semi-skilled</mat-label>
+                  <input
+                    type="number"
+                    matInput
+                    formControlName="incentiveSkilled"
+                    (change)="onFormChange()"
+                  />
+                </mat-form-field>
+                <mat-form-field
+                  appearance="outline"
+                  class="example-full-width item"
+                >
+                  <mat-label>Incentvie-Unskilled</mat-label>
+                  <input
+                    type="number"
+                    matInput
+                    formControlName="incentiveUnskilled"
+                    (change)="onFormChange()"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- <div id="others" formArrayName="others">
+              <table>
+                <tr>
+                  <td><h5>Other Earnings</h5></td>
+                </tr>
+                <tr
+                  *ngFor="let otherEarning of others().controls:let i=index"
+                  [formGroupName]="i"
+                >
+                  <td>
+                    <label>Others</label>
+                  </td>
+                  <td>
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width"
+                    >
+                      <mat-label>Name</mat-label>
+                      <input
+                        type="text"
+                        (change)="onFormChange()"
+                        matInput
+                        formControlName="name"
+                      />
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width"
+                    >
+                      <mat-label>Amount</mat-label>
+                      <input
+                        type="number"
+                        (change)="onFormChange()"
+                        matInput
+                        formControlName="amount"
+                      />
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      (click)="deleteEarning(i)"
+                      class="btn btn-danger"
+                    >
+                      -
+                    </button>
+                  </td>
+                </tr>
+              </table>
+              <button type="button" (click)="addNewEarning()" class="btn btn-primary">+</button>
+            </div> -->
           </div>
 
           <div>
             <table>
               <tr>
                 <td>
-                  <mat-form-field
-                    id="total"
-                    appearance="outline"
-                    class="example-full-width item"
-                  >
+                  <mat-form-field id="total" appearance="outline">
                     <mat-label>Total Earning (Gross)</mat-label>
-                    <input matInput formControlName="totalEarnings" required />
+                    <input matInput formControlName="totalEarnings" />
                   </mat-form-field>
                 </td>
               </tr>
             </table>
           </div>
 
-          <div style="display: flex; justify-content: space-around;">
+          <div
+            style="display: flex; justify-content: space-around;padding-top:2.5em"
+          >
             <button mat-raised-button color="primary" matStepperPrevious>
               Previous
             </button>
@@ -386,64 +262,111 @@
           </div>
         </mat-step>
 
-        <mat-step label="Deductions" id="deductions">
-          <div id="deductions">
-            <table class="example-full-width item" cellspacing="0">
-              <tr>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width item"
-                  >
-                    <mat-label>PF(%on Basic+DA)(%)</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-                <td><p>PF-textt</p></td>
+        <!-- Deductions -->
 
-                <td>
-                  <mat-radio-group aria-label="Select an option">
+        <mat-step label="Deductions" id="deductions" appearance="fill">
+          <div id="deductions">
+            <div class="columns">
+              <div class="column">
+                <div
+                  style="display: flex;  flex-direction:row;align-items:baseline;justify-content:flex-start"
+                >
+                  <div>
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width"
+                    >
+                      <mat-label>PF(%on Basic+DA)(%)</mat-label>
+                      <input
+                        matInput
+                        type="number"
+                        formControlName="DPF"
+                        (change)="onFormChange()"
+                        (input)="employeePFCalc()"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <p>{{ PFEmployee }}</p>
+                  </div>
+                </div>
+                <div
+                  style="display: flex;  flex-direction:row;align-items:baseline;justify-content:flex-start"
+                >
+                  <div>
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width item"
+                    >
+                      <mat-label>ESI(% on Gross)(%)</mat-label>
+                      <input
+                        matInput
+                        type="number"
+                        formControlName="DESI"
+                        (change)="onFormChange()"
+                        (input)="employeeESICalc()"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <p>{{ employeeESI }}</p>
+                </div>
+
+                <mat-form-field
+                  appearance="outline"
+                  class="example-full-width item"
+                >
+                  <mat-label>Labour Welfare fund</mat-label>
+                  <input
+                    matInput
+                    type="number"
+                    (change)="onFormChange()"
+                    formControlName="labourWelfareFund"
+                  />
+                </mat-form-field>
+              </div>
+              <div
+                class="column"
+                style="display: flex;  flex-direction:column;align-items:flex-start;margin:25px 0 45px 0; padding:20px 0 10px 0"
+              >
+                <div>
+                  <mat-radio-group
+                    aria-label="Select an option"
+                    formControlName="canteenDeduction"
+                    (change)="onFormChange()"
+                  >
                     <mat-label>Canteen Deduction:</mat-label>
                     <mat-radio-button value="Yes">Yes </mat-radio-button>
                     <mat-radio-button value="No">No </mat-radio-button>
                   </mat-radio-group>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width"
+                </div>
+                <div style="display: flex;  flex-direction:column;margin:0 ">
+                  <mat-radio-group formControlName="professionalTax">
+                    <mat-label>Professional Tax:</mat-label>
+                    <mat-radio-button value="Yes">Yes</mat-radio-button>
+                    <mat-radio-button value="No">No</mat-radio-button>
+                  </mat-radio-group>
+                  <div
+                    style="display: flex;  flex-direction:row;justify-content:center;align-items:baseline;"
+                    *ngIf="
+                      payrollFormGroup.controls.professionalTax.value === 'Yes'
+                    "
                   >
-                    <mat-label>ESI(% on Gross)(%)</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-                <td><p>ESI-textt</p></td>
-
-                <td>
-                  <mat-form-field appearance="outline">
-                    <mat-label>Professional Tax</mat-label>
-                    <mat-select>
-                      <mat-option value="monthly">Monthly</mat-option>
-                      <mat-option value="halfYear">Half-Yearly</mat-option>
-                      <mat-option value="year">Yearly</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width item"
-                  >
-                    <mat-label>Labour Welfare fund</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-              </tr>
-              <!-- <div id="de">
+                    <h6>Professional Tax is Half year Based</h6>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Amount</mat-label>
+                      <input
+                        matInput
+                        placeholder="Enter amount"
+                        (change)="onFormChange()"
+                        formControlName="professionalTaxAmount"
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 
+            <div id="de">
                 <table>
                   <tr>
                     <td>
@@ -455,7 +378,7 @@
                         class="example-full-width"
                       >
                         <mat-label>Name</mat-label>
-                        <input matInput />
+                        <input matInput  type="text"/>
                       </mat-form-field>
                     </td>
                     <td>
@@ -464,7 +387,7 @@
                         class="example-full-width"
                       >
                         <mat-label>Amount</mat-label>
-                        <input matInput />
+                        <input matInput type="number"/>
                       </mat-form-field>
                     </td>
                   </tr>
@@ -479,7 +402,7 @@
                         class="example-full-width"
                       >
                         <mat-label>Name</mat-label>
-                        <input matInput />
+                        <input matInputtype="text"/>
                       </mat-form-field>
                     </td>
                     <td>
@@ -488,7 +411,7 @@
                         class="example-full-width"
                       >
                         <mat-label>Amount</mat-label>
-                        <input matInput />
+                        <input matInput type="number" />
                       </mat-form-field>
                     </td>
                   </tr>
@@ -503,7 +426,7 @@
                         class="example-full-width"
                       >
                         <mat-label>Name</mat-label>
-                        <input matInput />
+                        <input matInput type="text" />
                       </mat-form-field>
                     </td>
                     <td>
@@ -512,7 +435,7 @@
                         class="example-full-width"
                       >
                         <mat-label>Amount</mat-label>
-                        <input matInput />
+                        <input matInput type="number"/>
                       </mat-form-field>
                     </td>
                   </tr>
@@ -527,7 +450,7 @@
                         class="example-full-width"
                       >
                         <mat-label>Name</mat-label>
-                        <input matInput />
+                        <input matInput type="text" />
                       </mat-form-field>
                     </td>
                     <td>
@@ -536,7 +459,7 @@
                         class="example-full-width"
                       >
                         <mat-label>Amount</mat-label>
-                        <input matInput />
+                        <input matInput type="number" />
                       </mat-form-field>
                     </td>
                   </tr>
@@ -551,7 +474,7 @@
                         class="example-full-width"
                       >
                         <mat-label>Name</mat-label>
-                        <input matInput />
+                        <input matInput type="text" />
                       </mat-form-field>
                     </td>
                     <td>
@@ -560,27 +483,29 @@
                         class="example-full-width"
                       >
                         <mat-label>Amount</mat-label>
-                        <input matInput />
+                        <input matInput type="number"/>
                       </mat-form-field>
                     </td>
                   </tr>
                 </table>
               </div> -->
-              <tr>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width item"
-                  >
-                    <mat-label>Total Deduction</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-              </tr>
-            </table>
+            <div
+              style="display: flex;  flex-direction:row;align-items:baseline;justify-content:flex-start"
+            >
+              <mat-form-field
+                appearance="outline"
+                class="example-full-width item"
+              >
+                <mat-label>Total Deduction</mat-label>
+                <input matInput formControlName="totalDeduction" />
+              </mat-form-field>
+              <h6>{{ wagetype }}</h6>
+            </div>
           </div>
 
-          <div style="display: flex; justify-content: space-around;">
+          <div
+            style="display: flex; justify-content: space-around;padding-top:2.5em"
+          >
             <button mat-raised-button color="primary" matStepperPrevious>
               Previous
             </button>
@@ -589,111 +514,141 @@
             </button>
           </div>
         </mat-step>
-
+        <!-- Employers -->
         <mat-step label="Employers">
           <div id="deductions">
-            <table>
-              <tr>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width item"
-                  >
-                    <mat-label>Net Take Home Paid to CL</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-radio-group
-                    aria-labelledby="example-radio-group-label"
-                    class="example-radio-group"
-                  >
-                    <label id="example-radio-group-label"
-                      >Service charge Type:
-                    </label>
-                    <mat-radio-button value="Percent"
-                      >Percentage
-                    </mat-radio-button>
-                    <mat-radio-button value="val">Value</mat-radio-button>
-                  </mat-radio-group>
-                  <!-- <mat-label>Service Charge</mat-label>
-                  <mat-radio-group aria-label="Select an option">
-                    <mat-radio-button value="Percent"
-                      >Percentage
-                    </mat-radio-button>
-                    <mat-radio-button value="val">Value</mat-radio-button>
-                  </mat-radio-group> -->
-                </td>
-              </tr>
+            <div class="columns">
+              <div
+                class="column"
+                style="display: flex;  flex-direction:column;align-items:flex-start;"
+              >
+                <div
+                  style="display: flex;  flex-direction:row;align-items:baseline;justify-content:center"
+                >
+                  <div>
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width item"
+                    >
+                      <mat-label>PF(%on Basic+DA)(%)</mat-label>
+                      <input
+                        matInput
+                        type="number"
+                        formControlName="EPF"
+                        (input)="employerPFCalc()"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <p>{{ PFEmployer }}</p>
+                </div>
+                <div
+                  style="display: flex;  flex-direction:row;align-items:baseline;justify-content:center"
+                >
+                  <div>
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width item"
+                    >
+                      <mat-label>ESI(% on Gross)(%)</mat-label>
+                      <input
+                        matInput
+                        type="number"
+                        formControlName="EESI"
+                        (input)="employerESICalc()"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <p>{{ employerESI }}</p>
+                </div>
+                <mat-radio-group
+                  aria-labelledby="example-radio-group-label"
+                  class="example-radio-group"
+                  formControlName="serviceCharge"
+                >
+                  <label id="example-radio-group-label"
+                    >Service charge Type:
+                  </label>
+                  <mat-radio-button value="%">Percentage </mat-radio-button>
+                  <mat-radio-button value="val">Value</mat-radio-button>
+                </mat-radio-group>
 
-              <tr>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width item"
-                  >
-                    <mat-label>PF(%on Basic+DA)(%)</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-                <td><p>PF-textt</p></td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width item"
-                  >
-                    <mat-label>Service Charge</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-                <td><p>ESI-textt</p></td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width item"
-                  >
-                    <mat-label>ESI(% on Gross)(%)</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-                <td><p>ESI-textt</p></td>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width item"
-                  >
-                    <mat-label>Service Tax</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-                <td><p>ESI-textt</p></td>
-              </tr>
-              <tr>
-                <td>
-                  <mat-form-field
-                    appearance="outline"
-                    class="example-full-width item"
-                  >
-                    <mat-label>CTC</mat-label>
-                    <input matInput />
-                  </mat-form-field>
-                </td>
-              </tr>
-            </table>
+                <div
+                  style="display: flex;  flex-direction:row;align-items:baseline;justify-content:center"
+                >
+                  <div>
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width item"
+                    >
+                      <mat-label>Service Charge</mat-label>
+                      <input
+                        matInput
+                        type="number"
+                        formControlName="serviceCharge"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <p>ESI-textt</p>
+                </div>
+              </div>
+              <div
+                class="column"
+                style="display: flex;  flex-direction:column;align-items:flex-start;"
+              >
+                <div
+                  style="display: flex;  flex-direction:row;align-items:baseline;justify-content:center"
+                >
+                  <div>
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width item"
+                    >
+                      <mat-label>Servicve Tax</mat-label>
+                      <input
+                        matInput
+                        type="number"
+                        formControlName="ServiceTax"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <p>ESI-textt</p>
+                </div>
+                <mat-form-field
+                  appearance="outline"
+                  class="example-full-width item"
+                >
+                  <mat-label>CTC</mat-label>
+                  <input matInput formControlName="CTC" />
+                </mat-form-field>
+
+                <mat-form-field
+                  appearance="outline"
+                  class="example-full-width item"
+                >
+                  <mat-label>Net Take Home Paid to CL</mat-label>
+                  <input matInput formControlName="netTakeHome" />
+                </mat-form-field>
+              </div>
+            </div>
           </div>
 
-          <!-- </table> -->
-          <div style="display: flex; justify-content: space-around;">
-            <button mat-raised-button color="warn" (click)="stepper.reset()">
+          <div
+            style="display: flex; justify-content: space-around;padding-top:2.5em"
+          >
+            <button
+              mat-raised-button
+              color="warn"
+              type="reset"
+              (click)="resetForm()"
+              (click)="stepper.reset()"
+            >
               Reset
             </button>
             <button mat-raised-button color="primary" matStepperPrevious>
               Back
             </button>
-            <button mat-raised-button color="primary" matStepperNext>
-              Save
+            <button mat-raised-button color="primary" (click)="onPreview()">
+              Preview
             </button>
           </div>
         </mat-step>
