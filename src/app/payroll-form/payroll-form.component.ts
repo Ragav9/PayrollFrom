@@ -62,13 +62,7 @@ export class PayrollFormComponent implements OnInit {
       professionalTax: [''],
       professionalTaxAmount: [''],
       labourWelfareFund: [''],
-      deductions: {
-        deduction_1: { name_1: [''], amount_1: [''] },
-        deduction_2: { name_2: [''], amount_2: [''] },
-        deduction_3: { name_3: [''], amount_3: [''] },
-        deduction_4: { name_4: [''], amount_4: [''] },
-        deduction_5: { name_5: [''], amount_5: [''] },
-      },
+      deductions: this._formBuilder.array([]),
       totalDeduction: [''],
       netTakeHome: [''],
       EPF: [''],
@@ -80,20 +74,24 @@ export class PayrollFormComponent implements OnInit {
     });
   }
 
-  others(): FormArray {
+  others(){
     return this.payrollFormGroup.get('others') as FormArray;
   }
+  deductions(){
+    return this.payrollFormGroup.get('deductions') as FormArray;
+  }
+
   newEarnings() {
     return this._formBuilder.group({
-      other_: { name_: '', amount_: '' },
+ name: [''], amount: [''] 
     });
   }
-  addNewEarning() {
-    return this.others().push(this.newEarnings());
+  newDeductions() {
+    return this._formBuilder.group({
+ name: [''], amount: [''] 
+    });
   }
-  deleteEarning(i: number) {
-    this.others().removeAt(i);
-  }
+ 
 
   ngOnInit(): any {
     const code = this.generatePayscaleCode(this.plant);
@@ -101,7 +99,29 @@ export class PayrollFormComponent implements OnInit {
     console.log(code);
     this.calculateTotalEarnings();
     this.calculateTotalDeduction();
+    // this.addNewEarning();
+    this.addnewItem('earning');
+    this.addnewItem('deduction');
   }
+
+addnewItem(type:string){
+if(type === 'earning'){
+  return this.others().push(this.newEarnings());
+}
+else if( type === 'deduction'){
+  return this.deductions().push(this.newDeductions());
+}
+}
+
+
+  deleteEarnings(i: number) {
+    this.others().removeAt(i);
+  }
+  deleteDeductions(i: number) {
+    this.deductions().removeAt(i);
+  }
+
+
 
   setEffectiveFromDate(date: any) {
     // this.payrollFormGroup.get('effectiveFrom')?.patchValue(event.value);

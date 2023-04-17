@@ -23,7 +23,18 @@
     clear: both;
   }
 }
-
+.row1{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: baseline;
+  height: 3.9em;
+}
+#others{
+  display: inline-block;
+  flex-direction: column;
+  margin-bottom: 4.8em;
+}
 .example-full-width {
   width: 85%;
   padding: 0 1.25em 0 0;
@@ -69,12 +80,10 @@ td {
   font-size: 14px;
   padding: 0 0 2.7em 3.2em;
 }
-// .mat-vertical-stepper .mat-step-label-active {
-//   color: red;
-// }
+
 :host ::ng-deep #others mat-form-field ,p {
-  width: 12.25rem;
-  padding-top: 1.5em;
+  width: 16.25rem;
+ 
 }
 :host ::ng-deep #deductions mat-form-field {
   display: flex;

@@ -35,7 +35,11 @@
               <div class="item">
                 <mat-form-field appearance="outline" class="example-full-width">
                   <mat-label>Pay Scale Description</mat-label>
-                  <input type="text" matInput formControlName="PayScaleDescription" />
+                  <input
+                    type="text"
+                    matInput
+                    formControlName="PayScaleDescription"
+                  />
                 </mat-form-field>
               </div>
               <div class="item">
@@ -55,15 +59,16 @@
                   <mat-datepicker-toggle
                     matIconSuffix
                     [for]="picker"
-                   
                   ></mat-datepicker-toggle>
-                  <mat-datepicker #picker  > </mat-datepicker>
+                  <mat-datepicker #picker> </mat-datepicker>
                 </mat-form-field>
               </div>
             </div>
           </div>
 
-          <div  style="display: flex; justify-content: flex-start;padding-top:2.5em">
+          <div
+            style="display: flex; justify-content: flex-start;padding-top:2.5em"
+          >
             <button mat-raised-button color="primary" matStepperNext>
               Next
             </button>
@@ -183,99 +188,64 @@
                 </mat-form-field>
               </div>
             </div>
-<!-- others earnings -->
+            <!-- others earnings -->
             <div id="others" formArrayName="others">
-              <div><p>Other Earnings</p></div>
-<div *ngFor="let otherEarning of others().controls;let i=index " >
-
-<ng-contianer *ngIf="i<=4">
-
-
-
-
-                <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3" 
-                [formGroupName]="i">
-                  <div class="col">
-                    <div class="p-3"><label>Other</label></div>
+              <p>Other Earnings</p>
+              <div
+                *ngFor="let otherEarning of others().controls; let i = index"
+              >
+                <!-- <ng-contianer *ngIf="i <= 4"> -->
+                  <div class="row1" [formGroupName]="i">
+                    <div class="col">
+                      <div class=" t">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Name</mat-label>
+                          <input
+                            type="text"
+                            matInput
+                            formControlName="name"
+                            (change)="onFormChange()"
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class=" t">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Amount</mat-label>
+                          <input
+                            type="text"
+                            matInput
+                            formControlName="amount"
+                            (change)="onFormChange()"
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="">
+                        <button
+                          type="button"
+                          class="btn btn-danger"
+                          (click)="deleteEarnings(i)"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col">
-                    <div class="p-3 t"> <mat-form-field appearance="outline">
-                      <mat-label>Name</mat-label>
-                      <input type="text" matInput formControlName="name"  (change)="onFormChange()"/>
-                      </mat-form-field></div>
-                  </div>
-                  <div class="col">
-                    <div class="p-3 t"> <mat-form-field appearance="outline">
-                      <mat-label>Amount</mat-label>
-                      <input type="text" matInput formControlName="amount" (change)="onFormChange()"/>
-                      </mat-form-field></div>
-                  </div>
-                  <div class="col">
-                    <div class="p-3 "> <button type="button" class="btn btn-danger"   (click)="deleteEarning(i)" > Remove </button></div>
-                  </div>
-                </div>
-              </ng-contianer>
+                <!-- </ng-contianer> -->
               </div>
 
+             
+            <div class="p-5" *ngIf="others().length < 4">
+                <button type="button" (click)="addnewItem('earning')" class="btn btn-primary">Add</button>
+              </div>
+            
+             
             </div>
-<div>   <button type="button" (click)="addNewEarning()" class="btn btn-primary">Add</button></div>
 
-
-
-
-
-              <!-- <table>
-                <tr>
-                  <td><h5>Other Earnings</h5></td>
-                </tr>
-                <tr
-                  *ngFor="let otherEarning of others().controls;let i=index"
-                  [formGroupName]="i"
-                >
-                  <td>
-                    <label>Others</label>
-                  </td>
-                  <td>
-                    <mat-form-field
-                      appearance="outline"
-                      class="example-full-width"
-                    >
-                      <mat-label>Name</mat-label>
-                      <input
-                        type="text"
-                        (change)="onFormChange()"
-                        matInput
-                        formControlName="name"
-                      />
-                    </mat-form-field>
-                  </td>
-                  <td>
-                    <mat-form-field
-                      appearance="outline"
-                      class="example-full-width"
-                    >
-                      <mat-label>Amount</mat-label>
-                      <input
-                        type="number"
-                        (change)="onFormChange()"
-                        matInput
-                        formControlName="amount"
-                      />
-                    </mat-form-field>
-                  </td>
-                  <td>
-                    <button
-                      type="button"
-                      (click)="deleteEarning(i)"
-                      class="btn btn-danger"
-                    >
-                      -
-                    </button>
-                  </td>
-                </tr>
-              </table>
-              <button type="button" (click)="addNewEarning()" class="btn btn-primary">+</button>
-            </div>  -->
+           
           </div>
 
           <div>
@@ -406,130 +376,60 @@
                 </div>
               </div>
             </div>
-            <!-- 
-            <div id="de">
-                <table>
-                  <tr>
-                    <td>
-                      <label>Deduction-1</label>
-                    </td>
-                    <td>
-                      <mat-form-field
-                        appearance="outline"
-                        class="example-full-width"
-                      >
-                        <mat-label>Name</mat-label>
-                        <input matInput  type="text"/>
-                      </mat-form-field>
-                    </td>
-                    <td>
-                      <mat-form-field
-                        appearance="outline"
-                        class="example-full-width"
-                      >
-                        <mat-label>Amount</mat-label>
-                        <input matInput type="number"/>
-                      </mat-form-field>
-                    </td>
-                  </tr>
+            <div id="others" formArrayName="deductions">
+              <p>Other Deductions</p>
+              <div
+                *ngFor="let otherDeduction of deductions().controls; let i = index"
+              >
+                  <div class="row1" [formGroupName]="i">
+                    <div class="col">
+                      <div class=" t">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Name</mat-label>
+                          <input
+                            type="text"
+                            matInput
+                            formControlName="name"
+                            (change)="onFormChange()"
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class=" t">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Amount</mat-label>
+                          <input
+                            type="text"
+                            matInput
+                            formControlName="amount"
+                            (change)="onFormChange()"
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="">
+                        <button
+                          type="button"
+                          class="btn btn-danger"
+                          (click)="deleteDeductions(i)"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+              
+              </div>
 
-                  <tr>
-                    <td>
-                      <label>Deduction-2</label>
-                    </td>
-                    <td>
-                      <mat-form-field
-                        appearance="outline"
-                        class="example-full-width"
-                      >
-                        <mat-label>Name</mat-label>
-                        <input matInputtype="text"/>
-                      </mat-form-field>
-                    </td>
-                    <td>
-                      <mat-form-field
-                        appearance="outline"
-                        class="example-full-width"
-                      >
-                        <mat-label>Amount</mat-label>
-                        <input matInput type="number" />
-                      </mat-form-field>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <label>Deduction-3</label>
-                    </td>
-                    <td>
-                      <mat-form-field
-                        appearance="outline"
-                        class="example-full-width"
-                      >
-                        <mat-label>Name</mat-label>
-                        <input matInput type="text" />
-                      </mat-form-field>
-                    </td>
-                    <td>
-                      <mat-form-field
-                        appearance="outline"
-                        class="example-full-width"
-                      >
-                        <mat-label>Amount</mat-label>
-                        <input matInput type="number"/>
-                      </mat-form-field>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <label>Deduction-4</label>
-                    </td>
-                    <td>
-                      <mat-form-field
-                        appearance="outline"
-                        class="example-full-width"
-                      >
-                        <mat-label>Name</mat-label>
-                        <input matInput type="text" />
-                      </mat-form-field>
-                    </td>
-                    <td>
-                      <mat-form-field
-                        appearance="outline"
-                        class="example-full-width"
-                      >
-                        <mat-label>Amount</mat-label>
-                        <input matInput type="number" />
-                      </mat-form-field>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <label>Deduction-5</label>
-                    </td>
-                    <td>
-                      <mat-form-field
-                        appearance="outline"
-                        class="example-full-width"
-                      >
-                        <mat-label>Name</mat-label>
-                        <input matInput type="text" />
-                      </mat-form-field>
-                    </td>
-                    <td>
-                      <mat-form-field
-                        appearance="outline"
-                        class="example-full-width"
-                      >
-                        <mat-label>Amount</mat-label>
-                        <input matInput type="number"/>
-                      </mat-form-field>
-                    </td>
-                  </tr>
-                </table>
-              </div> -->
+             
+            <div class="p-5" *ngIf="deductions().length < 4">
+                <button type="button" (click)="addnewItem('deduction')" class="btn btn-primary">Add</button>
+              </div>
+            
+             
+            </div>
             <div
               style="display: flex;  flex-direction:row;align-items:baseline;justify-content:flex-start"
             >
@@ -688,7 +588,12 @@
             <button mat-raised-button color="primary" matStepperPrevious>
               Back
             </button>
-            <button id="green" mat-raised-button color="primary" (click)="onPreview()">
+            <button
+              id="green"
+              mat-raised-button
+              color="primary"
+              (click)="onPreview()"
+            >
               Preview
             </button>
           </div>
