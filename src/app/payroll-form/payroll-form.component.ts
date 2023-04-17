@@ -301,6 +301,15 @@ export class PayrollFormComponent implements OnInit {
     this.router.navigate(['/viewPayroll']);
   }
 
+  saveForm() {
+    // Set the form data in the service
+    this.appService.setFormDetails(this.payrollFormGroup.value);
+    this.appService.setPFEmployee(this.PFEmployee);
+    this.appService.setPFEmployer(this.PFEmployer);
+    this.appService.setEmployeeESI(this.employeeESI);
+    this.appService.setEmployerESI(this.employerESI);
+  }
+
   onSubmit() {
     console.log(this.payrollFormGroup.value);
   }

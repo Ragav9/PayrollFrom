@@ -24,8 +24,42 @@ export class AppService {
     this.employeeESI = employeeESI;
     this.employerESI = employerESI;
   }
+  setFormDetails(formDetails: any) {
+    this.formDetails = formDetails;
+  }
+
+  setPFEmployee(PFEmployee: any) {
+    this.PFEmployee = PFEmployee;
+  }
+
+  setPFEmployer(PFEmployer: any) {
+    this.PFEmployer = PFEmployer;
+  }
+
+  setEmployeeESI(employeeESI: any) {
+    this.employeeESI = employeeESI;
+  }
+
+  setEmployerESI(employerESI: any) {
+    this.employerESI = employerESI;
+  }
 
   getFormDetails() {
     return this.formDetails;
+  }
+  getPFEmployee() {
+    return this.PFEmployee;
+  }
+
+  getPFEmployer() {
+    return this.PFEmployer;
+  }
+
+  getEmployeeESI() {
+    return this.employeeESI;
+  }
+
+  getEmployerESI() {
+    return this.employerESI;
   }
 }
