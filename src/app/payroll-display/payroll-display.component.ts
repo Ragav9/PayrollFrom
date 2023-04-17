@@ -61,6 +61,7 @@ export class PayrollDisplayComponent {
   constructor(private appService: AppService, private router: Router , private location:Location) {}
   ngOnInit() {
     this.formDeatils = this.appService.getFormDetails();
+    // const earning = this.formDeatils.others();
     this.PFEmployee=this.appService.PFEmployee
     this.PFEmployer=this.appService.PFEmployer
     this.employeeESI = this.appService.employeeESI

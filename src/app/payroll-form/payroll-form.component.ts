@@ -74,24 +74,25 @@ export class PayrollFormComponent implements OnInit {
     });
   }
 
-  others(){
+  others() {
     return this.payrollFormGroup.get('others') as FormArray;
   }
-  deductions(){
+  deductions() {
     return this.payrollFormGroup.get('deductions') as FormArray;
   }
 
   newEarnings() {
     return this._formBuilder.group({
- name: [''], amount: [''] 
+      name: [''],
+      amount: [''],
     });
   }
   newDeductions() {
     return this._formBuilder.group({
- name: [''], amount: [''] 
+      name: [''],
+      amount: [''],
     });
   }
- 
 
   ngOnInit(): any {
     const code = this.generatePayscaleCode(this.plant);
@@ -104,15 +105,13 @@ export class PayrollFormComponent implements OnInit {
     this.addnewItem('deduction');
   }
 
-addnewItem(type:string){
-if(type === 'earning'){
-  return this.others().push(this.newEarnings());
-}
-else if( type === 'deduction'){
-  return this.deductions().push(this.newDeductions());
-}
-}
-
+  addnewItem(type: string) {
+    if (type === 'earning') {
+      return this.others().push(this.newEarnings());
+    } else if (type === 'deduction') {
+      return this.deductions().push(this.newDeductions());
+    }
+  }
 
   deleteEarnings(i: number) {
     this.others().removeAt(i);
@@ -120,8 +119,6 @@ else if( type === 'deduction'){
   deleteDeductions(i: number) {
     this.deductions().removeAt(i);
   }
-
-
 
   setEffectiveFromDate(date: any) {
     // this.payrollFormGroup.get('effectiveFrom')?.patchValue(event.value);
@@ -144,7 +141,7 @@ else if( type === 'deduction'){
     this.calculateCTC();
   }
 
-  // Employee ESI
+  // Employee ESI ----------------------------------------
   employeeESICalc() {
     const emplyoeeValue = this.payrollFormGroup.get('DESI')?.value;
     this.employeeESI = (Number(emplyoeeValue) * 0.01 * Number(this.grossSalary))
@@ -152,18 +149,20 @@ else if( type === 'deduction'){
       .toString();
   }
 
-  // Employer ESI
+  // Employer ESI---------------------------------------------
   employerESICalc() {
     const employerValue = this.payrollFormGroup.get('EESI')?.value;
     this.employerESI = (Number(employerValue) * 0.01 * Number(this.grossSalary))
       .toFixed(2)
       .toString();
   }
+  // WageType ------------------------------------
   viewWageType() {
     this.wagetype = this.payrollFormGroup.get('wageType')?.value;
   }
+
+  // Employee PF----------------------------------------------
   employeePFCalc() {
-    // Employee PF
     const employee = this.payrollFormGroup.get('DPF')?.value;
     this.PFEmployee = (
       employee *
@@ -175,7 +174,7 @@ else if( type === 'deduction'){
       .toString();
   }
 
-  // Employer PF
+  // Employer PF ----------------------------------------------
   employerPFCalc() {
     const employer = this.payrollFormGroup.get('EPF')?.value;
     this.PFEmployer = (
@@ -188,7 +187,7 @@ else if( type === 'deduction'){
       .toString();
   }
 
-  // TotalDeduction
+  // TotalDeduction---------------------------------------------------------
   calculateTotalDeduction() {
     const epf = Number(this.PFEmployee) || 0;
     const esi = Number(this.employeeESI) || 0;
@@ -197,19 +196,25 @@ else if( type === 'deduction'){
     const labourFund =
       this.payrollFormGroup.get('labourWelfareFund')?.value || 0;
 
-    this.totalDeduct = epf + esi + profTax + labourFund;
-    
-    if (this.wagetype === 'Daily') {
-     const deduct = Number(this.totalDeduct) * this.monthWage
-      this.payrollFormGroup.patchValue({ totalDeduction: deduct})
-    } else {
-      this.payrollFormGroup.patchValue({ totalDeduction:this.totalDeduct  })
-    }
+    const deductionValues = this.deductions();
+    const otherDeduct = deductionValues.value.reduce(
+      (total: any, current: { amount: any }) => {
+        return total + current.amount;
+      },
+      0
+    );
 
-    
+    this.totalDeduct = epf + esi + profTax + labourFund + Number(otherDeduct);
+
+    if (this.wagetype === 'Daily') {
+      const deduct = Number(this.totalDeduct) * this.monthWage;
+      this.payrollFormGroup.patchValue({ totalDeduction: deduct });
+    } else {
+      this.payrollFormGroup.patchValue({ totalDeduction: this.totalDeduct });
+    }
   }
 
-  // TotalEarnings
+  // TotalEarnings------------------------------------------------------
   calculateTotalEarnings() {
     const basic = this.payrollFormGroup.get('basic')?.value || 0;
     const da = this.payrollFormGroup.get('DA')?.value || 0;
@@ -227,18 +232,13 @@ else if( type === 'deduction'){
       this.payrollFormGroup.get('attendanceAllowance')?.value || 0;
     const nightShiftAllowance =
       this.payrollFormGroup.get('nightShiftAllowance')?.value || 0;
-    const other_1_amount =
-      this.payrollFormGroup.get('others.other_1.amount_1')?.value || 0;
-    const other_2_amount =
-      this.payrollFormGroup.get('others.other_2.amount_2')?.value || 0;
-    const other_3_amount =
-      this.payrollFormGroup.get('others.other_3.amount_3')?.value || 0;
-    const other_4_amount =
-      this.payrollFormGroup.get('others.other_4.amount_4')?.value || 0;
-    const other_5_amount =
-      this.payrollFormGroup.get('others.other_5.amount_5')?.value || 0;
-    const other_6_amount =
-      this.payrollFormGroup.get('others.other_6.amount_6')?.value || 0;
+    const earningValues = this.others();
+    const sum = earningValues.value.reduce(
+      (total: any, current: { amount: any }) => {
+        return total + current.amount;
+      },
+      0
+    );
 
     this.grossSalary =
       basic +
@@ -251,12 +251,7 @@ else if( type === 'deduction'){
       incentiveUnskilled +
       attendanceAllowance +
       nightShiftAllowance +
-      other_1_amount +
-      other_2_amount +
-      other_3_amount +
-      other_4_amount +
-      other_5_amount +
-      other_6_amount;
+      Number(sum);
 
     if (this.wagetype === 'Daily') {
       const monthGrossSalary = Number(this.grossSalary) * this.monthWage;
@@ -264,7 +259,6 @@ else if( type === 'deduction'){
     } else {
       this.payrollFormGroup.patchValue({ totalEarnings: this.grossSalary });
     }
-
   }
   calculateNETtakeHome() {
     const netValue = Number(this.grossSalary) - Number(this.totalDeduct);

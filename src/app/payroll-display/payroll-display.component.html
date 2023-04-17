@@ -51,6 +51,18 @@
             <p class="col" id="totalEarnings">
               <label> NightshiftAllowance</label>
             </p>
+
+            <ng-container
+              *ngFor="let other of formDeatils.others.controls; let i = index"
+            >
+              <p class="col">
+                <label>{{ other.get('name').value }} </label>
+              </p>
+            </ng-container>
+
+            <p class="col">
+              <label> </label>
+            </p>
             <p class="col" id="totalEarnings">
               <label>Total Earning </label>
             </p>
@@ -78,6 +90,16 @@
             <p class="col" for="nightshiftAllowance">
               : {{ formDeatils.nightShiftAllowance }}
             </p>
+            <ng-container
+              *ngFor="let other of formDeatils.others.controls; let i = index"
+            >
+              <p class="col">
+                <label>: {{ other.get('amount').value }} </label>
+              </p>
+            </ng-container>
+            <p class="col">
+              <label> </label>
+            </p>
             <p class="col" for="totalEarnings">
               : {{ formDeatils.totalEarnings }}
             </p>
@@ -104,6 +126,9 @@
               <label>Labour Welfare Fund</label>
             </p>
             <p class="col" id="totalDeduction">
+              <label></label>
+            </p>
+            <p class="col" id="totalDeduction">
               <label>Total Deduction</label>
             </p>
           </div>
@@ -111,13 +136,28 @@
           <div class="col-6">
             <p class="col" for="DPF ">: {{ PFEmployee }}</p>
             <p class="col" for="DESI ">: {{ employeeESI }}</p>
-            <p class="col" for="professionalTax" *ngIf="formDeatils.professionalTax === 'Yes'"> : {{ formDeatils.professionalTaxAmount }}</p>
-            <p class="col" for="professionalTax" *ngIf="formDeatils.professionalTax !== 'Yes'"> : {{ formDeatils.professionalTax }}</p>
+            <p
+              class="col"
+              for="professionalTax"
+              *ngIf="formDeatils.professionalTax === 'Yes'"
+            >
+              : {{ formDeatils.professionalTaxAmount }}
+            </p>
+            <p
+              class="col"
+              for="professionalTax"
+              *ngIf="formDeatils.professionalTax !== 'Yes'"
+            >
+              : {{ formDeatils.professionalTax }}
+            </p>
             <p class="col" for="canteenDeduction">
               : {{ formDeatils.canteenDeduction }}
             </p>
             <p class="col" for="labourWelfareFund">
               : {{ formDeatils.labourWelfareFund }}
+            </p>
+            <p class="col" id="totalDeduction">
+              <label></label>
             </p>
             <p class="col" for="totalDeduction">
               : {{ formDeatils.totalDeduction }}
@@ -160,16 +200,19 @@
     id="ndLine"
     style="display: flex; justify-content: space-around;padding-top:0.5em"
   >
-    <p><label>CTC </label> :{{ formDeatils.CTC }}</p>
+    <p><label>CTC </label> :Rs {{ formDeatils.CTC }}</p>
 
     <p>
-      <label>Net Take Home Paid to CL </label> :{{ formDeatils.netTakeHome }}
+      <label>Net Take Home Paid to CL </label> : Rs {{ formDeatils.netTakeHome }}
     </p>
   </div>
 
   <div style="display: flex; justify-content: space-around;padding:1.5em">
     <button mat-raised-button color="primary" (click)="back()">Back</button>
-    <button id="green" mat-raised-button color="primary" (click)="saveData()">Save</button>
+    
+    <button id="green" mat-raised-button color="primary" (click)="saveData()">
+      Save
+    </button>
   </div>
 </div>
 
