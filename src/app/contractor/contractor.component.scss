@@ -10,13 +10,16 @@
   width: 100%;
 }
 .column {
+  margin-top: 0.9em;
   width: 100%;
 }
 @media (min-width: 48em) {
   .column {
     width: 50%;
     float: left;
+    display: flex;
     flex-direction: column;
+    align-items: center;
   }
   .columns {
     content: '';
@@ -62,7 +65,7 @@ width: 13.5em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 17.5rem;
+  width: 22.5rem;
   height: 3.2rem;
   margin-top: 0.2em;
   // margin: 1.25em 0.625em 0.313em 0;
@@ -75,7 +78,7 @@ width: 13.5em;
   flex-direction: column;
   align-items: center;
   margin-top: 0.2em;
-  width: 16.5em;
+  width: 22.5rem;
   height: 3.9em;
 
 }

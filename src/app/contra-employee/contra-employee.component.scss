@@ -1,0 +1,54 @@
+.columns {
+  width: 100%;
+}
+.column {
+  margin-top: 0.9em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+@media (min-width: 48em) {
+  .column {
+    width: 50%;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .columns {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+:host ::ng-deep #firstBox mat-form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 22.5rem;
+  height: 4.1rem;
+  margin-top: 1.9em;
+  font-size: 1px;
+  padding: 0 0 2.7em 3.2em;
+}
+:host ::ng-deep #secondBox mat-form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 22.5rem;
+  height: 4.1rem;
+ 
+  font-size: 14px;
+  padding: 0 0 2.7em 3.2em;
+}
+.item {
+  margin-top: 0.8em;
+  display: flex;
+  flex-direction: row;
+
+}
+:host ::ng-deep #item mat-form-field {
+  width: 8.8rem;
+}

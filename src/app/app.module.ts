@@ -19,8 +19,9 @@ import { PayrollDisplayComponent } from './payroll-display/payroll-display.compo
 import { MatInputModule } from '@angular/material/input';
 import { ContractorComponent } from './contractor/contractor.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ContraEmployeeComponent } from './contra-employee/contra-employee.component';
 @NgModule({
-  declarations: [SelectOverviewExample, PayrollFormComponent, PayrollDisplayComponent, ContractorComponent, HomePageComponent],
+  declarations: [SelectOverviewExample, PayrollFormComponent, PayrollDisplayComponent, ContractorComponent, HomePageComponent, ContraEmployeeComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
