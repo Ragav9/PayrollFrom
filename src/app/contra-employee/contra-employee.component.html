@@ -2,7 +2,7 @@
   <div>
     <h3>Contract Employee Onboard Form</h3>
   </div>
-  <form>
+  <form [formGroup]="ContractEmployeeForm" >
     <mat-vertical-stepper #stepper>
       <mat-step required label="Basic Details" active>
         <div id="firstBox">
@@ -17,16 +17,16 @@
               </mat-form-field>
 
               <mat-form-field appearance="outline">
-                <mat-label>Contractor Name</mat-label>
-                <input matInput />
+                <mat-label>Employee Name</mat-label>
+                <input matInput formControlName="employeeName"  />
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Father / Husband / Spouce Name</mat-label>
-                <input matInput />
+                <input matInput formControlName="spouseName" />
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Marital Status</mat-label>
-                <mat-select>
+                <mat-select  formControlName="maritalStatus">
                   <mat-option value="Single">Single</mat-option>
                   <mat-option value="Married">Married </mat-option>
                   <mat-option value="Widow">Widow</mat-option>
@@ -41,7 +41,7 @@
                 class="example-full-width"
               >
                 <mat-label>Date Of Birth</mat-label>
-                <input matInput [matDatepicker]="picker1" />
+                <input matInput formControlName="DOB" [matDatepicker]="picker1" />
                 <mat-hint>DD/MM/YYYY</mat-hint>
                 <mat-datepicker-toggle
                   matIconSuffix
@@ -51,7 +51,7 @@
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Gender</mat-label>
-                <mat-select>
+                <mat-select  formControlName="gender">
                   <mat-option value="Male">Male</mat-option>
                   <mat-option value="Female">Female</mat-option>
                   <mat-option value="Transgender">Transgender</mat-option>
@@ -60,11 +60,11 @@
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Mobile Number</mat-label>
-                <input matInput />
+                <input type="number" matInput  formControlName="EmpMobileNo"/>
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Adhaar Number</mat-label>
-                <input matInput />
+                <input matInput formControlName="adhaarNo" />
               </mat-form-field>
             </div>
           </div>
@@ -81,33 +81,33 @@
             <div class="column">
               <mat-form-field appearance="outline">
                 <mat-label>Address</mat-label>
-                <textarea matInput></textarea>
+                <textarea matInput formControlName="address"></textarea>
               </mat-form-field>
               <div class="item" id="item">
                 <mat-form-field appearance="outline">
                   <mat-label>Pincode</mat-label>
-                  <input matInput />
+                  <input matInput formControlName="pincode" />
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                   <mat-label>City</mat-label>
-                  <input matInput />
+                  <input matInput formControlName="city" />
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                   <mat-label>State</mat-label>
-                  <input matInput />
+                  <input matInput formControlName="state" />
                 </mat-form-field>
               </div>
               <mat-form-field appearance="outline">
                 <mat-label>Emergency Contact No.</mat-label>
-                <input matInput />
+                <input matInput formControlName="emergencyContactNo" />
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Emergency Contact Person</mat-label>
-                <input matInput />
+                <input matInput formControlName="emergencyContactPerson" />
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Energency Contact Relation</mat-label>
-                <mat-select>
+                <mat-select formControlName="emergencyContactRelation">
                   <mat-option value="Father">Father</mat-option>
                   <mat-option value="Mother">Mother</mat-option>
                   <mat-option value="Brother">Brother</mat-option>
@@ -120,7 +120,7 @@
             <div class="column" >
               <mat-form-field appearance="outline">
                 <mat-label>Blood Group</mat-label>
-                <mat-select >
+                <mat-select formControlName="bloodGroup">
                   <mat-option value="A+">A+</mat-option>
                   <mat-option value="A-">A-</mat-option>
                   <mat-option value="B+">B+</mat-option>
@@ -129,19 +129,19 @@
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>PF/UAN No.</mat-label>
-                <input matInput />
+                <input matInput formControlName="PF_UAN" />
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>ESI No.</mat-label>
-                <input matInput />
+                <input matInput formControlName="ESI_No" />
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Transporter</mat-label>
-                <input matInput />
+                <input matInput formControlName="transporter" />
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Village</mat-label>
-                <input matInput />
+                <input matInput formControlName="village" />
               </mat-form-field>
             </div>
           </div>
