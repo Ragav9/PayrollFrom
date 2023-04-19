@@ -1,11 +1,13 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
+<mat-toolbar color="primary" style="margin-bottom :15px" >
+  <mat-toolbar-row style="display: flex; flex-direction:row;justify-content:space-between; ">
     <button mat-icon-button>
-      <mat-icon>menu</mat-icon>
+      <mat-icon routerLink="/Home">menu</mat-icon>
     </button>
     <h1>Digital HR Management</h1>
 
-    <div></div>
+    <div>
+      <mat-icon (click)="back()">arrow_back</mat-icon>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
 

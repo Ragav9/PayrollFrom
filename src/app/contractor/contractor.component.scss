@@ -1,0 +1,81 @@
+
+.container {
+  width: 100%;
+}
+
+// .item-1 {
+//   // padding-bottom: 0.1rem;
+// }
+.columns {
+  width: 100%;
+}
+.column {
+  width: 100%;
+}
+@media (min-width: 48em) {
+  .column {
+    width: 50%;
+    float: left;
+    flex-direction: column;
+  }
+  .columns {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+.row1{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: baseline;
+  height: 3.9em;
+  flex-wrap: wrap;
+  
+}
+
+.example-full-width {
+  width: 85%;
+  padding: 0 1.25em 0 0;
+  margin-right: 10px;
+}
+mat-lable {
+  font-weight: 600;
+}
+mat-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-2{
+  
+}
+
+:host ::ng-deep .item-2 mat-form-field{
+width: 13.5em;
+
+}
+
+:host ::ng-deep #firstBox mat-form-field{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 17.5rem;
+  height: 3.2rem;
+  margin-top: 0.2em;
+  // margin: 1.25em 0.625em 0.313em 0;
+  font-size: 14px;
+  padding: 0 0 2.7em 3.2em;
+  
+}
+:host ::ng-deep #secondBox mat-form-field{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.2em;
+  width: 16.5em;
+  height: 3.9em;
+
+}

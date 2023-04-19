@@ -3,13 +3,6 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppService } from '../app.service';
 
-import {
-  UntypedFormGroup,
-  UntypedFormControl,
-  UntypedFormBuilder,
-} from '@angular/forms';
-// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
 @Component({
   selector: 'app-payroll-form',
   templateUrl: './payroll-form.component.html',

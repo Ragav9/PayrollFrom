@@ -5,6 +5,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 import {AppRoutingModule} from '././app-routing.module';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatIconModule} from '@angular/material/icon'
 
 import { MaterialExampleModule } from '../material.module';
 import { SelectOverviewExample } from './select-overview-example';
@@ -16,8 +17,10 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { PayrollFormComponent } from './payroll-form/payroll-form.component';
 import { PayrollDisplayComponent } from './payroll-display/payroll-display.component';
 import { MatInputModule } from '@angular/material/input';
+import { ContractorComponent } from './contractor/contractor.component';
+import { HomePageComponent } from './home-page/home-page.component';
 @NgModule({
-  declarations: [SelectOverviewExample, PayrollFormComponent, PayrollDisplayComponent],
+  declarations: [SelectOverviewExample, PayrollFormComponent, PayrollDisplayComponent, ContractorComponent, HomePageComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
@@ -35,6 +38,7 @@ import { MatInputModule } from '@angular/material/input';
     MatDatepickerModule,
     MatRadioModule,
     MatInputModule,
+    MatIconModule,
   ],
   bootstrap: [SelectOverviewExample],
 })
