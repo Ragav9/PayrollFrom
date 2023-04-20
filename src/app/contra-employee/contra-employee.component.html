@@ -59,9 +59,18 @@
                 <!-- <mat-error *ngIf="basicForm.get('gender')?.hasError('required')">Gender Is Mandatory</mat-error> -->
               </mat-form-field>
               <mat-form-field appearance="outline">
-                <mat-label>Mobile Number</mat-label>
+                <mat-label>Mobile Number</mat-label> 
                 <input type="number" matInput  formControlName="EmpMobileNo"/>
               </mat-form-field>
+                <!-- <mat-error *ngIf="ContractEmployeeForm.get('EmpMobileNo')?.hasError('required')">Mobile number is required.</mat-error> -->
+                <mat-error *ngIf="ContractEmployeeForm.get('EmpMobileNo')?.hasError('required')">Mobile number is required.</mat-error>
+
+              <!-- <div *ngIf="ContractEmployeeForm.get('EmpMobileNo')?.invalid && (ContractEmployeeForm.get('EmpMobileNo')?.dirty || ContractEmployeeForm.get('EmpMobileNo').touched)">
+                <div *ngIf="ContractEmployeeForm.get('EmpMobileNo')?.errors.required">Mobile number is required.</div>
+                <div *ngIf="ContractEmployeeForm.get('EmpMobileNo')?.errors.pattern">Invalid mobile number format.</div>
+                <div *ngIf="ContractEmployeeForm.get('EmpMobileNo')?.errors.minlength || ContractEmployeeForm.get('EmpMobileNo')?.errors.maxlength">Mobile number must be exactly 10 digits long.</div>
+              </div> -->
+                
               <mat-form-field appearance="outline">
                 <mat-label>Adhaar Number</mat-label>
                 <input matInput formControlName="adhaarNo" />

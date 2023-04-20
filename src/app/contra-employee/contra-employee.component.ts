@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
+
+
+const mobileRegex = /^[0-9]{10}$/;
+
+
 @Component({
   selector: 'app-contra-employee',
   templateUrl: './contra-employee.component.html',
   styleUrls: ['./contra-employee.component.scss']
 })
 export class ContraEmployeeComponent {
+  
 
   constructor(private fb:FormBuilder){
     
@@ -17,7 +23,7 @@ export class ContraEmployeeComponent {
     spouseName:[''],
     maritalStatus:[''],
     DOB:[''],
-    EmpMobileNo:['', Validators.required],
+    EmpMobileNo: ['',[Validators.required,Validators.minLength(10)]],
     gender:[''],
     adhaarNo:[''],
     address:[''],

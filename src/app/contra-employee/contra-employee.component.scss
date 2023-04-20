@@ -22,6 +22,10 @@
     clear: both;
   }
 }
+mat-error{
+  font-size: 12px;
+  padding-left: 5em;
+}
 
 :host ::ng-deep #firstBox mat-form-field {
   display: flex;
