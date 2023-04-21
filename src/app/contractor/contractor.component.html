@@ -1,6 +1,6 @@
 <div class="container mat-elevation-z8">
   <div>
-    <h3>Contract Onboard Form</h3>
+    <h3>Contractor Onboard Form</h3>
   </div>
   <div>
     <form [formGroup]="contractorForm" (ngSubmit)="onSubmit()">
@@ -25,7 +25,6 @@
                   <mat-label>Contractor Owner Email</mat-label>
                   <input matInput formControlName="ContraOwnerEmail" />
                 </mat-form-field>
-            
               </div>
 
               <div class="column">
@@ -34,7 +33,7 @@
                   <input type="text" matInput formControlName="PocPerson" />
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="example-full-width">
-                  <mat-label>Number </mat-label>
+                  <mat-label> Mobile Number </mat-label>
                   <input type="text" matInput formControlName="Number" />
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="example-full-width">
@@ -44,7 +43,8 @@
                 <div class="item-1">
                   <mat-form-field
                     appearance="outline"
-                    class="example-full-width" >
+                    class="example-full-width"
+                  >
                     <mat-label>Address</mat-label>
                     <textarea matInput formControlName="Address"></textarea>
                   </mat-form-field>
@@ -53,9 +53,7 @@
             </div>
           </div>
 
-          <div
-            style="display: flex; justify-content:center;padding-top:2.5em"
-          >
+          <div style="display: flex; justify-content:center;padding-top:2.5em">
             <button mat-raised-button color="primary" matStepperNext>
               Next
             </button>
@@ -63,98 +61,107 @@
         </mat-step>
 
         <mat-step required label="Contractor License Details" active>
-<div id="secondBox">
-  <div class="columns" style="padding-bottom:10px;">
-    <div class="column">
-      <mat-form-field appearance="outline" class="example-full-width">
-        <mat-label>License Number </mat-label>
-        <input type="text" matInput formControlName="L_Number" />
-      </mat-form-field>
+          <div id="secondBox">
+            <div class="columns" style="padding-bottom:10px;">
+              <div class="column">
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label>License Number </mat-label>
+                  <input type="text" matInput formControlName="L_Number" />
+                </mat-form-field>
 
-      <div class="item-2">
-        <mat-form-field
-          appearance="outline"
-          color="primary"
-          class="example-full-width"
-        >
-          <mat-label>License Valid From</mat-label>
-          <input matInput formControlName="L_Valid_From" [matDatepicker]="picker1" />
-          <mat-hint>DD/MM/YYYY</mat-hint>
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="picker1"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker1> </mat-datepicker>
-        </mat-form-field>
-        <mat-form-field
-          appearance="outline"
-          color="primary"
-          class="example-full-width"
-        >
-          <mat-label>License Valid TO</mat-label>
-          <input matInput formControlName="L_Valid_To" [matDatepicker]="picker2" />
-          <mat-hint>DD/MM/YYYY</mat-hint>
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="picker2"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker2> </mat-datepicker>
-        </mat-form-field>
-      </div>
-      <mat-form-field appearance="outline" class="example-full-width">
-        <mat-label>License Attachment    <mat-icon>attach_file</mat-icon> </mat-label>
-     
-        <input type="text" matInput  />
-      </mat-form-field>
-    </div>
+                <div class="item-2">
+                  <mat-form-field
+                    appearance="outline"
+                    color="primary"
+                    class="example-full-width"
+                    (click)="picker1.open()"
+                  >
+                    <mat-label>License Valid From</mat-label>
+                    <input
+                      matInput
+                      formControlName="L_Valid_From"
+                      [matDatepicker]="picker1"
+                    />
+                    <mat-hint>DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle
+                      matIconSuffix
+                      [for]="picker1"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #picker1> </mat-datepicker>
+                  </mat-form-field>
+                  <mat-form-field
+                    appearance="outline"
+                    color="primary"
+                    class="example-full-width"
+                    (click)="picker2.open()"
+                  >
+                    <mat-label>License Valid TO</mat-label>
+                    <input
+                      matInput
+                      formControlName="L_Valid_To"
+                      [matDatepicker]="picker2"
+                    />
+                    <mat-hint>DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle
+                      matIconSuffix
+                      [for]="picker2"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #picker2> </mat-datepicker>
+                  </mat-form-field>
+                </div>
 
-    <div class="column">
-      <mat-form-field appearance="outline" class="example-full-width">
-        <mat-label>Maximum Head Count</mat-label>
-        <input type="text" matInput formControlName="MaxHeadLimit" />
-      </mat-form-field>
-      <mat-form-field
-        appearance="outline"
-        color="primary"
-        class="example-full-width"
-      >
-        <mat-label>Effective Date</mat-label>
-        <input matInput formControlName="EffectIveDate" [matDatepicker]="picker3" />
-        <mat-hint>DD/MM/YYYY</mat-hint>
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker3"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker3> </mat-datepicker>
-      </mat-form-field>
-    </div>
-  </div>
-</div>
-<div
-style="display: flex; justify-content: space-around;padding-top:2.5em"
->
-<button
-  mat-raised-button
-  color="warn"
-  type="reset"
+<!-- 
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label>License Attachment </mat-label>
+                  <mat-file-input formControlName="License_Attachment" (change)="onFileSelected($event)" matInput>
+                    <mat-icon matSuffix>attach_file</mat-icon>
+                  </mat-file-input>
+                  <mat-error *ngIf="contractorForm.get('License_Attachment')?.hasError('required')">File is required</mat-error>
+                </mat-form-field> -->
+              </div>
 
-  (click)="stepper.reset()"
->
-  Reset
-</button>
-<button mat-raised-button color="primary" matStepperPrevious>
-  Back
-</button>
-<button
-  id="green"
-  mat-raised-button
-  color="primary"
- 
->
-Save
-</button>
-</div>
-        
+              <div class="column">
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label>Maximum Head Count</mat-label>
+                  <input type="text" matInput formControlName="MaxHeadLimit" />
+                </mat-form-field>
+                <mat-form-field
+                  appearance="outline"
+                  color="primary"
+                  class="example-full-width"
+                >
+                  <mat-label>Effective Date</mat-label>
+                  <input
+                    matInput
+                    formControlName="EffectIveDate"
+                    [matDatepicker]="picker3"
+                  />
+                  <mat-hint>DD/MM/YYYY</mat-hint>
+                  <mat-datepicker-toggle
+                    matIconSuffix
+                    [for]="picker3"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker3> </mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div
+            style="display: flex; justify-content: space-around;padding-top:2.5em"
+          >
+            <button
+              mat-raised-button
+              color="warn"
+              type="reset"
+              (click)="stepper.reset()"
+            >
+              Reset
+            </button>
+            <button mat-raised-button color="primary" matStepperPrevious>
+              Back
+            </button>
+            <button id="green" mat-raised-button color="primary">Save</button>
+          </div>
         </mat-step>
       </mat-vertical-stepper>
     </form>

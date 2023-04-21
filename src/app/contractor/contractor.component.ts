@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { AcceptValidator, MaxSizeValidator } from '@angular-material-components/file-input';
 
 @Component({
   selector: 'app-contractor',
@@ -17,6 +18,7 @@ export class ContractorComponent {
     Number:[''],
     Email:[''],
     Address:[''],
+    License_Attachment:['',Validators.required],
   MaxHeadLimit:[''],
   L_Number:[''],
   L_Valid_From:[''],
@@ -30,7 +32,9 @@ EffectIveDate:['']
   onSubmit() {
     console.log(this.contractorForm.value);
   }
-
+  onFileSelected(event:any){
+    const file=event.target.files[0];
+  }
 
 
 }

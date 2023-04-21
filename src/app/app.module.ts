@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ContractorComponent } from './contractor/contractor.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ContraEmployeeComponent } from './contra-employee/contra-employee.component';
+// import {NgxMatFileInputModule} from '@angular-material-components/file-input';
 @NgModule({
   declarations: [SelectOverviewExample, PayrollFormComponent, PayrollDisplayComponent, ContractorComponent, HomePageComponent, ContraEmployeeComponent],
   schemas: [
@@ -40,6 +41,7 @@ import { ContraEmployeeComponent } from './contra-employee/contra-employee.compo
     MatRadioModule,
     MatInputModule,
     MatIconModule,
+    // NgxMatFileInputModule,
   ],
   bootstrap: [SelectOverviewExample],
 })
